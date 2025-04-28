@@ -62,7 +62,7 @@ body {
 .footer{
     color: white;
     background-color: red;
-    height: 150px;
+    height: 100px;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -98,7 +98,7 @@ body {
 }
 
 .footer .logo img{
-    width: 120px;
+    width: 90px;
 }
 
 .footer h4 {
@@ -148,6 +148,7 @@ body {
     background-color: black;
     color: white;
     border-radius: 10px;
+    border: solid 2px white;
     width: 40%;
 }
 
