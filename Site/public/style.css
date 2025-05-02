@@ -235,3 +235,13 @@ body {
     font-weight: bold;
     cursor: pointer;
 }
+
+.container .card .formulario .inputs .div_select_plano {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: gray;
+    border-radius: 10px;
+    padding: 0px 20px 20px 20px;
+}
