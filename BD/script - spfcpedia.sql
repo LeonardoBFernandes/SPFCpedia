@@ -4,11 +4,11 @@ use spfcpedia;
 -- criando as tabelas
 create table planoST (
 idplanoST int primary key,
-nome varchar(20) not null,
-nivel_acumuloPontos int not null,
-prioridade_compradeIngressos int not null,
-qtd_ST_infantilDependente int not null,
-numero_convidados int not null
+nome varchar(20),
+nivel_acumuloPontos int,
+prioridade_compradeIngressos int,
+qtd_ST_infantilDependente int,
+numero_convidados int
 );
 
 create table estado (
@@ -64,8 +64,9 @@ insert into estado (idEstado, nome, sigla, regiao) values
 
 -- inserindo dados na tabela de planos de sócio-torcedor
 insert into planoST (idPlanoST, nome, nivel_acumuloPontos, prioridade_compradeIngressos, qtd_ST_infantilDependente, numero_convidados) values
-(1, 'Vermelho', 1, 0, 1, 0),
-(2, 'Branco', 2, 1, 1, 0),
-(3, 'Preto', 3, 2, 2, 1),
-(4, 'Tricolor', 4, 3, 2, 1),
-(5, 'Diamante', 5, 4, 3, 2);
+(1, 'Sem plano', null, null, null, null),
+(2, 'Vermelho', 1, 0, 1, 0),
+(3, 'Branco', 2, 1, 1, 0),
+(4, 'Preto', 3, 2, 2, 1),
+(5, 'Tricolor', 4, 3, 2, 1),
+(6, 'Diamante', 5, 4, 3, 2);
