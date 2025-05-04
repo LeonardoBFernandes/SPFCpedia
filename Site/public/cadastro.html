@@ -1,162 +1,182 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SPFCpedia - Cadastro</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" type="imgs/png" href="imgs/Escudo_SPFC.ico">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>SPFCpedia - Cadastro</title>
+
+  <script src="./js/sessao.js"></script>
+
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="icon" href="./assets/imgs/Escudo_SPFC.ico" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
 </head>
 
 <body>
-    <div class="header">
-        <div class="escudo_nome">
-            <a href="index.html">
-                <img src="imgs/Escudo_SPFC.png" alt="">
-                <h2>SPFCpedia</h2>
-            </a>
-        </div>
-        <ul class="nav_links">
-            <li>
-                <a href="index.html">Home</a>
-            </li>
-            <li>
-                <a href="titulos.html">Títulos</a>
-            </li>
-            <li>
-                <a href="idolos.html">Ídolos</a>
-            </li>
-            <li>
-                <a href="morumbi.html">Morumbi</a>
-            </li>
-            <li>
-                <a href="elenco.html">Elenco</a>
-            </li>
-            <li>
-                <a href="login.html">Login</a>
-            </li>
-        </ul>
+  <!--header inicio-->
+  <div class="header">
+    <div class="escudo_nome">
+      <a href="index.html">
+        <img src="assets/imgs/Escudo_SPFC.png" alt="Escudo do SPFC">
+        <h2>SPFCpedia</h2>
+      </a>
     </div>
-    <div class="container">
-        <div class="enunciado">
-            <h1>Cadastro</h1>
+    <ul class="nav_links">
+      <li>
+        <a href="index.html">Home</a>
+      </li>
+      <li>
+        <a href="login.html">Login</a>
+      </li>
+    </ul>
+  </div>
+  <!--header fim-->
+
+  <div class="alerta_erro">
+    <div class="card_erro" id="cardErro">
+      <span id="mensagem_erro"></span>
+    </div>
+  </div>
+  <div class="container">
+    <div class="enunciado">
+      <h1>Cadastro</h1>
+    </div>
+    <div class="card">
+      <div class="formulario">
+        <div class="logoenome">
+          <img src="assets/imgs/Escudo_SPFC.png" alt="Escudo do SPFC">
+          <h1>SPFCpedia</h1>
         </div>
-        <div class="card">
-            <div class="formulario">
-                <div class="logoenome">
-                    <img src="imgs/Escudo_SPFC.png" alt="Escudo do SPFC">
-                    <h1>SPFCpedia</h1>
-                </div>
-                <div class="inputs">
-                    <h1>Nome:</h1>
-                    <input type="text" id="ipt_nome" placeholder="Nome">
-                    <h1>Sobrenome:</h1>
-                    <input type="text" id="ipt_sobrenome" placeholder="Sobrenome">
-                    <h1>Data de Nascimento:</h1>
-                    <input type="date" id="ipt_dtNasc">
-                    <h1>É sócio-torcedor?</h1>
-                    <div class="sociotorcedor">
-                        <div>
-                            <input type="checkbox" id="ipt_socioSim" onclick="sociotorcedor()">
-                            <p>Sim, sou sócio!</p>
-                        </div>
-                    </div>
-                    <div id="div_select_plano"></div>
-                    <h1>Cidade:</h1>
-                    <input type="text" id="ipt_cidade" placeholder="Cidade">
-                    <h1>Estado:</h1>
-                    <select id="select_estado">
-                        <option value="vazio">Selecione seu estado</option>
-                        <option value="1">Acre</option>
-                        <option value="2">Alagoas</option>
-                        <option value="3">Amapá</option>
-                        <option value="4">Amazonas</option>
-                        <option value="5">Bahia</option>
-                        <option value="6">Ceará</option>
-                        <option value="7">Espírito Santo</option>
-                        <option value="8">Goiás</option>
-                        <option value="9">Distrito Federal</option>
-                        <option value="10">Maranhão</option>
-                        <option value="11">Mato Grosso</option>
-                        <option value="12">Mato Grosso do Sul</option>
-                        <option value="13">Minas Gerais</option>
-                        <option value="14">Pará</option>
-                        <option value="15">Paraíba</option>
-                        <option value="16">Paraná</option>
-                        <option value="17">Pernambuco</option>
-                        <option value="18">Piauí</option>
-                        <option value="19">Rio de Janeiro</option>
-                        <option value="20">Rio Grande do Norte</option>
-                        <option value="21">Rio Grande do sul</option>
-                        <option value="22">Rondônia</option>
-                        <option value="23">Roraima</option>
-                        <option value="24">Santa Catarina</option>
-                        <option value="25">São Paulo</option>
-                        <option value="26">Sergipe</option>
-                        <option value="27">Tocantins</option>
-                    </select>
-                    <h1>E-mail:</h1>
-                    <input type="email" id="ipt_email" placeholder="E-mail">
-                    <h1>Senha:</h1>
-                    <input type="password" id="ipt_senha" placeholder="**********">
-                    <h1>Confirmar senha:</h1>
-                    <input type="password" id="ipt_confirmarSenha" placeholder="**********"><br>
-                    <button onclick="cadastrar()">Cadastrar</button>
-                </div>
+        <div class="inputs">
+          <h1>Nome:</h1>
+          <input type="text" id="ipt_nome" placeholder="Nome">
+          <h1>Sobrenome:</h1>
+          <input type="text" id="ipt_sobrenome" placeholder="Sobrenome">
+          <h1>Data de Nascimento:</h1>
+          <input type="date" id="ipt_dtNasc">
+          <h1>É sócio-torcedor?</h1>
+          <div class="sociotorcedor">
+            <div>
+              <input type="radio" name="planoST" id="ipt_socioSim" oninput="sociotorcedor()">
+              <p>Sim, sou sócio!</p>
             </div>
+            <div>
+              <input type="radio" name="planoST" id="ipt_socioNao" oninput="sociotorcedor()">
+              <p>Não sou sócio.</p>
+            </div>
+          </div>
+          <div id="div_select_plano"></div>
+          <h1>Cidade:</h1>
+          <input type="text" id="ipt_cidade" placeholder="Cidade">
+          <h1>Estado:</h1>
+          <select id="select_estado">
+            <option value="vazio">Selecione seu estado</option>
+            <option value="1">Acre</option>
+            <option value="2">Alagoas</option>
+            <option value="3">Amapá</option>
+            <option value="4">Amazonas</option>
+            <option value="5">Bahia</option>
+            <option value="6">Ceará</option>
+            <option value="7">Espírito Santo</option>
+            <option value="8">Goiás</option>
+            <option value="9">Distrito Federal</option>
+            <option value="10">Maranhão</option>
+            <option value="11">Mato Grosso</option>
+            <option value="12">Mato Grosso do Sul</option>
+            <option value="13">Minas Gerais</option>
+            <option value="14">Pará</option>
+            <option value="15">Paraíba</option>
+            <option value="16">Paraná</option>
+            <option value="17">Pernambuco</option>
+            <option value="18">Piauí</option>
+            <option value="19">Rio de Janeiro</option>
+            <option value="20">Rio Grande do Norte</option>
+            <option value="21">Rio Grande do sul</option>
+            <option value="22">Rondônia</option>
+            <option value="23">Roraima</option>
+            <option value="24">Santa Catarina</option>
+            <option value="25">São Paulo</option>
+            <option value="26">Sergipe</option>
+            <option value="27">Tocantins</option>
+          </select>
+          <h1>E-mail:</h1>
+          <input type="email" id="ipt_email" placeholder="E-mail">
+          <h1>Senha:</h1>
+          <input type="password" id="ipt_senha" placeholder="**********">
+          <h1>Confirmar senha:</h1>
+          <input type="password" id="ipt_confirmarSenha" placeholder="**********"><br>
+          <button onclick="cadastrar()">Cadastrar</button>
         </div>
+      </div>
     </div>
-    <div class="footer">
-        <div class="logo">
-            <img src="imgs/Escudo_SPFC.png" alt="">
-            <h1>São Paulo Futebol Clube</h1>
-        </div>
-        <div class="redes-sociais">
-            <h4>Redes sociais</h4>
-            <ul>
-                <li><a href="https://www.instagram.com/saopaulofc/" target="_blank"><img src="imgs/instagram.png"
-                            alt=""></a></li>
-                <li><a href="https://youtube.com/@saopaulofc?si=m9PlbScdJMwnmjd2" target="_blank"><img
-                            src="imgs/youtube.png" alt=""></a></li>
-                <li><a href="https://x.com/SaoPauloFC" target="_blank"><img src="imgs/X.png" alt=""></a></li>
-            </ul>
-        </div>
+  </div>
+
+  <!--footer inicio-->
+  <div class="footer">
+    <div class="logo">
+      <img src="assets/imgs/Escudo_SPFC.png" alt="">
+      <h1>São Paulo Futebol Clube</h1>
     </div>
+    <div class="redes-sociais">
+      <h4>Redes sociais</h4>
+      <ul>
+        <li><a href="https://www.instagram.com/saopaulofc/" target="_blank"><img src="assets/imgs/instagram.png"
+              alt=""></a></li>
+        <li><a href="https://youtube.com/@saopaulofc?si=m9PlbScdJMwnmjd2" target="_blank"><img
+              src="assets/imgs/youtube.png" alt=""></a></li>
+        <li><a href="https://x.com/SaoPauloFC" target="_blank"><img src="assets/imgs/X.png" alt=""></a></li>
+      </ul>
+    </div>
+  </div>
+  <!--footer fim-->
 </body>
+
+</html>
+
 <script>
-    function sociotorcedor() {
-        let socioSim = ipt_socioSim.checked;
-        if (socioSim == true) {
-            div_select_plano.innerHTML = `<span class='div_select_plano'>
+
+  // Array para armazenar empresas cadastradas para validação de código de ativação 
+  let listaEmpresasCadastradas = [];
+
+  function sociotorcedor() {
+    let socioSim = ipt_socioSim.checked;
+    if (socioSim == true) {
+      div_select_plano.innerHTML = `<span class='div_select_plano'>
             <h1>Insira o tipo do seu plano de sócio-torcedor:</h1>
             <select id="select_plano">
                 <option value="vazio">Selecione seu plano</option>
-                <option value="1">Vermelho</option>
-                <option value="2">Branco</option>
-                <option value="3">Preto</option>
-                <option value="4">Tricolor</option>
-                <option value="5">Diamante</option>
+                <option value="2">Vermelho</option>
+                <option value="3">Branco</option>
+                <option value="4">Preto</option>
+                <option value="5">Tricolor</option>
+                <option value="6">Diamante</option>
                 </select>
                 </span>
                 `;
-        }
-        if (socioSim == false) {
-            div_select_plano.innerHTML = '';
-        }
     }
+    if (socioSim == false) {
+      div_select_plano.innerHTML = '';
+    }
+  }
 
-    function cadastrar() {
-        // aguardar();
-        
-        //Recupere o valor da nova input pelo nome do id
-        // Agora vá para o método fetch logo abaixo
+  function cadastrar() {
+    // aguardar();
+
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
     let socioSim = ipt_socioSim.checked;
+    let socioNao = ipt_socioNao.checked;
     var nomeVar = ipt_nome.value;
     var sobrenomeVar = ipt_sobrenome.value;
     var dtNascVar = ipt_dtNasc.value;
+    var planoSTVar = '';
     if (socioSim == true) {
-        var planoSTVar = select_plano.value;
+      planoSTVar = select_plano.value;
+    } else if (socioNao == true) {
+      planoSTVar = 1;
     }
     var cidadeVar = ipt_cidade.value;
     var estadoVar = select_estado.value;
@@ -170,6 +190,7 @@
       sobrenomeVar == "" ||
       dtNascVar == "" ||
       planoSTVar == "vazio" ||
+      planoSTVar == "" ||
       cidadeVar == "" ||
       estadoVar == "vazio" ||
       emailVar == "" ||
@@ -178,14 +199,116 @@
     ) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
-        "(Preencha todos os campos)";
+        "Preencha todos os campos.";
 
-      finalizarAguardar();
+      // finalizarAguardar();
       return false;
     } else {
       setInterval(sumirMensagem, 5000);
     }
-}
-</script>
 
-</html>
+    if (nomeVar.length <= 1) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "O nome inserido é inválido.";
+      return;
+    } else {
+      setInterval(sumirMensagem, 5000);
+    }
+
+    if (sobrenomeVar.length <= 1) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "O sobrenome inserido é inválido.";
+      return;
+    } else {
+      setInterval(sumirMensagem, 5000);
+    }
+
+    if (cidadeVar.length <= 1) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "A cidade inserida é inválida.";
+      return;
+    } else {
+      setInterval(sumirMensagem, 5000);
+    }
+
+    let emailTemArroba = emailVar.indexOf('@');
+    let emailTemPonto = emailVar.indexOf('.')
+    if (emailVar.length <= 1 || emailTemArroba == -1 || emailTemPonto == -1) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "O email inserido é inválido.";
+      return;
+    } else {
+      setInterval(sumirMensagem, 5000);
+    }
+
+    if (senhaVar.length <= 1) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "A senha inserida é inválida.";
+    } else {
+      setInterval(sumirMensagem, 5000);
+    }
+
+    if (senhaVar != confirmacaoSenhaVar) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "Certifique-se de que os campos de senha e confirmar senha estão iguais.";
+      return;
+    } else {
+      setInterval(sumirMensagem, 5000);
+    }
+
+    // Enviando o valor da nova input
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        nomeServer: nomeVar,
+        sobrenomeServer: sobrenomeVar,
+        dtNascServer: dtNascVar,
+        planoSTServer: planoSTVar,
+        cidadeServer: cidadeVar,
+        estadoServer: estadoVar,
+        emailServer: emailVar,
+        senhaServer: senhaVar
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+          cardErro.style.display = "block";
+
+          mensagem_erro.innerHTML =
+            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+          setTimeout(() => {
+            window.location = "login.html";
+          }, "2000");
+
+          limparFormulario();
+          finalizarAguardar();
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        // finalizarAguardar();
+      });
+
+    return false;
+  }
+
+  function sumirMensagem() {
+    cardErro.style.display = "none";
+  }
+</script>

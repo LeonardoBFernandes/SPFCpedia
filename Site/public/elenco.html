@@ -5,21 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SPFCpedia - Elenco</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" type="imgs/png" href="imgs/Escudo_SPFC.ico">
+    <script src="./js/sessao.js"></script>
+
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="icon" href="./assets/imgs/Escudo_SPFC.ico" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
 
 <body>
     <div class="header">
         <div class="escudo_nome">
-            <a href="index.html">
-                <img src="imgs/Escudo_SPFC.png" alt="">
+            <a href="indexComLogin.html">
+                <img src="assets/imgs/Escudo_SPFC.png" alt="Escudo do SPFC">
                 <h2>SPFCpedia</h2>
             </a>
         </div>
         <ul class="nav_links">
             <li>
-                <a href="index.html">Home</a>
+                <a href="indexComLogin.html">Home</a>
             </li>
             <li>
                 <a href="titulos.html">Títulos</a>
@@ -33,9 +36,10 @@
             <li>
                 <a href="elenco.html">Elenco</a>
             </li>
-            <li>
-                <a href="login.html">Login</a>
-            </li>
+            <div class="hello">
+                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+            </div>
+            <button onclick="limparSessao()">Sair</button>
         </ul>
     </div>
     <div class="container">
@@ -48,11 +52,11 @@
         <div class="divLinhaAtleta">
             <div class="divAtleta">
                 <div class="identificacao">
-                    <img src="imgs/Jogadores/goleiro_jandrei_elenco.png" alt="Jandrei">
+                    <img src="assets/imgs/Jogadores/goleiro_jandrei_elenco.png" alt="Jandrei">
                     <div class="divNome">
                         <h1>Jandrei</h1>
                     </div>
-                    <img src="imgs/Camisas/Camisa_goleiro_jandrei.PNG" alt="Camisa 93">
+                    <img src="assets/imgs/Camisas/Camisa_goleiro_jandrei.PNG" alt="Camisa 93">
                 </div>
                 <p>Nome completo: Jandrei Chitolina Carniel</p>
                 <p>Altura: 1.86m</p>
@@ -62,11 +66,11 @@
             </div>
             <div class="divAtleta">
                 <div class="identificacao">
-                    <img src="imgs/Jogadores/goleiro_leandro_elenco.png" alt="Leandro">
+                    <img src="assets/imgs/Jogadores/goleiro_leandro_elenco.png" alt="Leandro">
                     <div class="divNome">
                         <h1>Leandro</h1>
                     </div>
-                    <img src="imgs/Camisas/Camisa_goleiro_leandro.PNG" alt="Camisa 12">
+                    <img src="assets/imgs/Camisas/Camisa_goleiro_leandro.PNG" alt="Camisa 12">
                 </div>
                 <p>Nome completo: Leandro Mathias Silva Bueno</p>
                 <p>Altura: 1.88m</p>
@@ -78,11 +82,11 @@
         <div class="divLinhaAtleta">
             <div class="divAtleta">
                 <div class="identificacao">
-                    <img src="imgs/Jogadores/goleiro_rafael_elenco.png" alt="Rafael">
+                    <img src="assets/imgs/Jogadores/goleiro_rafael_elenco.png" alt="Rafael">
                     <div class="divNome">
                         <h1>Rafael</h1>
                     </div>
-                    <img src="imgs/Camisas/Camisa_goleiro_rafael.PNG" alt="Camisa 23">
+                    <img src="assets/imgs/Camisas/Camisa_goleiro_rafael.PNG" alt="Camisa 23">
                 </div>
                 <p>Nome completo: Rafael Pires Monteiro</p>
                 <p>Altura: 1.93m</p>
@@ -92,11 +96,11 @@
             </div>
             <div class="divAtleta">
                 <div class="identificacao">
-                    <img src="imgs/Jogadores/goleiro_young_elenco.png" alt="Young">
+                    <img src="assets/imgs/Jogadores/goleiro_young_elenco.png" alt="Young">
                     <div class="divNome">
                         <h1>Young</h1>
                     </div>
-                    <img src="imgs/Camisas/Camisa_goleiro_young.PNG" alt="Camisa 50">
+                    <img src="assets/imgs/Camisas/Camisa_goleiro_young.PNG" alt="Camisa 50">
                 </div>
                 <p>Nome completo: Young Navarro Moraes</p>
                 <p>Altura: 2.01m</p>
@@ -111,11 +115,11 @@
         <div class="divLinhaAtleta">
             <div class="divAtleta">
                 <div class="identificacao">
-                    <img src="imgs/Jogadores/alan_franco_elenco.png" alt="Alan Franco">
+                    <img src="assets/imgs/Jogadores/alan_franco_elenco.png" alt="Alan Franco">
                     <div class="divNome">
                         <h1>Alan Franco</h1>
                     </div>
-                    <img src="imgs/Camisas/Camisa_jogador_alan_franco.PNG" alt="Camisa 28">
+                    <img src="assets/imgs/Camisas/Camisa_jogador_alan_franco.PNG" alt="Camisa 28">
                 </div>
                 <p>Nome completo: Alan Javier Franco</p>
                 <p>Altura: 1.83m</p>
@@ -125,11 +129,11 @@
             </div>
             <div class="divAtleta">
                 <div class="identificacao">
-                    <img src="imgs/Jogadores/arboleda_elenco.png" alt="Arboleda">
+                    <img src="assets/imgs/Jogadores/arboleda_elenco.png" alt="Arboleda">
                     <div class="divNome">
                         <h1>Arboleda</h1>
                     </div>
-                    <img src="imgs/Camisas/Camisa_jogador_arboleda.PNG" alt="Camisa 5">
+                    <img src="assets/imgs/Camisas/Camisa_jogador_arboleda.PNG" alt="Camisa 5">
                 </div>
                 <p>Nome completo: Robert Abel Arboleda Escobar</p>
                 <p>Altura: 1.87m</p>
@@ -141,11 +145,11 @@
         <div class="divLinhaAtleta">
             <div class="divAtleta">
                 <div class="identificacao">
-                    <img src="imgs/Jogadores/cedric_elenco.png" alt="Cédric">
+                    <img src="assets/imgs/Jogadores/cedric_elenco.png" alt="Cédric">
                     <div class="divNome">
                         <h1>Cédric</h1>
                     </div>
-                    <img src="imgs/Camisas/Camisa_jogador_cedric.PNG" alt="Camisa 6">
+                    <img src="assets/imgs/Camisas/Camisa_jogador_cedric.PNG" alt="Camisa 6">
                 </div>
                 <p>Nome completo: Cédric Ricardo Alves Soares</p>
                 <p>Altura: 1.71m</p>
@@ -155,11 +159,11 @@
             </div>
             <div class="divAtleta">
                 <div class="identificacao">
-                    <img src="imgs/Jogadores/enzo_elenco.png" alt="Enzo Díaz">
+                    <img src="assets/imgs/Jogadores/enzo_elenco.png" alt="Enzo Díaz">
                     <div class="divNome">
                         <h1>Enzo Díaz</h1>
                     </div>
-                    <img src="imgs/Camisas/Camisa_jogador_enzo.PNG" alt="Camisa 13">
+                    <img src="assets/imgs/Camisas/Camisa_jogador_enzo.PNG" alt="Camisa 13">
                 </div>
                 <p>Nome completo: Enzo Hernán Díaz</p>
                 <p>Altura: 1.67m</p>
@@ -171,11 +175,11 @@
         <div class="divLinhaAtleta">
             <div class="divAtleta">
                 <div class="identificacao">
-                    <img src="imgs/Jogadores/ferraresi_elenco.png" alt="Ferraresi">
+                    <img src="assets/imgs/Jogadores/ferraresi_elenco.png" alt="Ferraresi">
                     <div class="divNome">
                         <h1>Ferraresi</h1>
                     </div>
-                    <img src="imgs/Camisas/Camisa_jogador_ferraresi.PNG" alt="Camisa 32">
+                    <img src="assets/imgs/Camisas/Camisa_jogador_ferraresi.PNG" alt="Camisa 32">
                 </div>
                 <p>Nome completo: Nahuel Adolfo Ferraresi Hernández</p>
                 <p>Altura: 1.88m</p>
@@ -185,11 +189,11 @@
             </div>
             <div class="divAtleta">
                 <div class="identificacao">
-                    <img src="imgs/Jogadores/igao_elenco.png" alt="Igão">
+                    <img src="assets/imgs/Jogadores/igao_elenco.png" alt="Igão">
                     <div class="divNome">
                         <h1>Igão</h1>
                     </div>
-                    <img src="imgs/Camisas/Camisa_jogador_igao.PNG" alt="Camisa 34">
+                    <img src="assets/imgs/Camisas/Camisa_jogador_igao.PNG" alt="Camisa 34">
                 </div>
                 <p>Nome completo: Igor Odoni Gomes</p>
                 <p>Altura: 1.87m</p>
@@ -201,11 +205,11 @@
         <div class="divLinhaAtleta">
             <div class="divAtleta">
                 <div class="identificacao">
-                    <img src="imgs/Jogadores/igorVinicius_elenco.png" alt="Igor Vinícius">
+                    <img src="assets/imgs/Jogadores/igorVinicius_elenco.png" alt="Igor Vinícius">
                     <div class="divNome">
                         <h1>Igor Vinícius</h1>
                     </div>
-                    <img src="imgs/Camisas/Camisa_jogador_igor_vinicius.PNG" alt="Camisa 2">
+                    <img src="assets/imgs/Camisas/Camisa_jogador_igor_vinicius.PNG" alt="Camisa 2">
                 </div>
                 <p>Nome completo: Igor Vinícius de Souza</p>
                 <p>Altura: 1.74m</p>
@@ -215,11 +219,11 @@
             </div>
             <div class="divAtleta">
                 <div class="identificacao">
-                    <img src="imgs/Jogadores/patryck_elenco.png" alt="Patryck">
+                    <img src="assets/imgs/Jogadores/patryck_elenco.png" alt="Patryck">
                     <div class="divNome">
                         <h1>Patryck</h1>
                     </div>
-                    <img src="imgs/Camisas/Camisa_jogador_patryck.PNG" alt="Camisa 36">
+                    <img src="assets/imgs/Camisas/Camisa_jogador_patryck.PNG" alt="Camisa 36">
                 </div>
                 <p>Nome completo: Patryck Lanza dos Reis</p>
                 <p>Altura: 1.84m</p>
@@ -231,11 +235,11 @@
         <div class="divLinhaAtleta">
             <div class="divAtleta">
                 <div class="identificacao">
-                    <img src="imgs/Jogadores/ruan_elenco.png" alt="Ruan">
+                    <img src="assets/imgs/Jogadores/ruan_elenco.png" alt="Ruan">
                     <div class="divNome">
                         <h1>Ruan</h1>
                     </div>
-                    <img src="imgs/Camisas/Camisa_jogador_ruan.PNG" alt="Camisa 22">
+                    <img src="assets/imgs/Camisas/Camisa_jogador_ruan.PNG" alt="Camisa 22">
                 </div>
                 <p>Nome completo: Ruan Tressoldi Netto</p>
                 <p>Altura: 1.87m</p>
@@ -245,11 +249,11 @@
             </div>
             <div class="divAtleta">
                 <div class="identificacao">
-                    <img src="imgs/Jogadores/sabino_elenco.png" alt="Sabino">
+                    <img src="assets/imgs/Jogadores/sabino_elenco.png" alt="Sabino">
                     <div class="divNome">
                         <h1>Sabino</h1>
                     </div>
-                    <img src="imgs/Camisas/Camisa_jogador_sabino.PNG" alt="Camisa 35">
+                    <img src="assets/imgs/Camisas/Camisa_jogador_sabino.PNG" alt="Camisa 35">
                 </div>
                 <p>Nome completo: José Sabino Chagas Monteiro</p>
                 <p>Altura: 1.84m</p>
@@ -261,11 +265,11 @@
         <div class="divLinhaAtleta">
             <div class="divAtleta">
                 <div class="identificacao">
-                    <img src="imgs/Jogadores/wendell_elenco.png" alt="Wendell">
+                    <img src="assets/imgs/Jogadores/wendell_elenco.png" alt="Wendell">
                     <div class="divNome">
                         <h1>Wendell</h1>
                     </div>
-                    <img src="imgs/Camisas/Camisa_jogador_igao.PNG" alt="Camisa 18">
+                    <img src="assets/imgs/Camisas/Camisa_jogador_wendell.PNG" alt="Camisa 18">
                 </div>
                 <p>Nome completo: Wendell Nascimento Borges</p>
                 <p>Altura: 1.76m</p>
@@ -280,11 +284,11 @@
         <div class="divLinhaAtleta">
             <div class="divAtleta">
                 <div class="identificacao">
-                    <img src="imgs/Jogadores/alisson_elenco.png" alt="Alisson">
+                    <img src="assets/imgs/Jogadores/alisson_elenco.png" alt="Alisson">
                     <div class="divNome">
                         <h1>Alisson</h1>
                     </div>
-                    <img src="imgs/Camisas/Camisa_jogador_alisson.PNG" alt="Camisa 25">
+                    <img src="assets/imgs/Camisas/Camisa_jogador_alisson.PNG" alt="Camisa 25">
                 </div>
                 <p>Nome completo: Alisson Euler de Freitas Castro</p>
                 <p>Altura: 1.74m</p>
@@ -294,11 +298,11 @@
             </div>
             <div class="divAtleta">
                 <div class="identificacao">
-                    <img src="imgs/Jogadores/alves_elenco.png" alt="Alves">
+                    <img src="assets/imgs/Jogadores/alves_elenco.png" alt="Alves">
                     <div class="divNome">
                         <h1>Alves</h1>
                     </div>
-                    <img src="imgs/Camisas/Camisa_jogador_alves.PNG" alt="Camisa 47">
+                    <img src="assets/imgs/Camisas/Camisa_jogador_alves.PNG" alt="Camisa 47">
                 </div>
                 <p>Nome completo: Matheus Alves Nascimento</p>
                 <p>Altura: 1.78m</p>
@@ -310,11 +314,11 @@
         <div class="divLinhaAtleta">
             <div class="divAtleta">
                 <div class="identificacao">
-                    <img src="imgs/Jogadores/bobadilla_elenco.png" alt="Bobadilla">
+                    <img src="assets/imgs/Jogadores/bobadilla_elenco.png" alt="Bobadilla">
                     <div class="divNome">
                         <h1>Bobadilla</h1>
                     </div>
-                    <img src="imgs/Camisas/Camisa_jogador_bobadilla.PNG" alt="Camisa 21">
+                    <img src="assets/imgs/Camisas/Camisa_jogador_bobadilla.PNG" alt="Camisa 21">
                 </div>
                 <p>Nome completo: Damián Josué Bobadilla Benítez</p>
                 <p>Altura: 1.81m</p>
@@ -324,11 +328,11 @@
             </div>
             <div class="divAtleta">
                 <div class="identificacao">
-                    <img src="imgs/Jogadores/luiz_gustavo_elenco.png" alt="Luiz Gustavo">
+                    <img src="assets/imgs/Jogadores/luiz_gustavo_elenco.png" alt="Luiz Gustavo">
                     <div class="divNome">
                         <h1>Luiz Gustavo</h1>
                     </div>
-                    <img src="imgs/Camisas/Camisa_jogador_luiz_gustavo.PNG" alt="Camisa 16">
+                    <img src="assets/imgs/Camisas/Camisa_jogador_luiz_gustavo.PNG" alt="Camisa 16">
                 </div>
                 <p>Nome completo: Luiz Gustavo Dias</p>
                 <p>Altura: 1.87m</p>
@@ -340,11 +344,11 @@
         <div class="divLinhaAtleta">
             <div class="divAtleta">
                 <div class="identificacao">
-                    <img src="imgs/Jogadores/marcos_antonio_elenco.png" alt="Marcos Antônio">
+                    <img src="assets/imgs/Jogadores/marcos_antonio_elenco.png" alt="Marcos Antônio">
                     <div class="divNome">
                         <h1>Marcos Antônio</h1>
                     </div>
-                    <img src="imgs/Camisas/Camisa_jogador_marcos_antonio.PNG" alt="Camisa 20">
+                    <img src="assets/imgs/Camisas/Camisa_jogador_marcos_antonio.PNG" alt="Camisa 20">
                 </div>
                 <p>Nome completo: Marcos Antônio Silva Santos</p>
                 <p>Altura: 1.66m</p>
@@ -354,11 +358,11 @@
             </div>
             <div class="divAtleta">
                 <div class="identificacao">
-                    <img src="imgs/Jogadores/oscar_elenco.png" alt="Oscar">
+                    <img src="assets/imgs/Jogadores/oscar_elenco.png" alt="Oscar">
                     <div class="divNome">
                         <h1>Oscar</h1>
                     </div>
-                    <img src="imgs/Camisas/Camisa_jogador_oscar.PNG" alt="Camisa 8">
+                    <img src="assets/imgs/Jogadores/oscar_elenco.png" alt="Camisa 8">
                 </div>
                 <p>Nome completo: Oscar dos Santos Emboaba Júnior</p>
                 <p>Altura: 1.80m</p>
@@ -370,11 +374,11 @@
         <div class="divLinhaAtleta">
             <div class="divAtleta">
                 <div class="identificacao">
-                    <img src="imgs/Jogadores/pablo_maia_elenco.png" alt="Pablo Maia">
+                    <img src="assets/imgs/Jogadores/pablo_maia_elenco.png" alt="Pablo Maia">
                     <div class="divNome">
                         <h1>Pablo Maia</h1>
                     </div>
-                    <img src="imgs/Camisas/Camisa_jogador_pablo_maia.PNG" alt="Camisa 29">
+                    <img src="assets/imgs/Camisas/Camisa_jogador_pablo_maia.PNG" alt="Camisa 29">
                 </div>
                 <p>Nome completo: Pablo Gonçalves Maia Fortunato</p>
                 <p>Altura: 1.78m</p>
@@ -384,11 +388,11 @@
             </div>
             <div class="divAtleta">
                 <div class="identificacao">
-                    <img src="imgs/Jogadores/rodriguinho_elenco.png" alt="Rodriguinho">
+                    <img src="assets/imgs/Jogadores/rodriguinho_elenco.png" alt="Rodriguinho">
                     <div class="divNome">
                         <h1>Rodriguinho</h1>
                     </div>
-                    <img src="imgs/Camisas/Camisa_jogador_rodriguinho.PNG" alt="Camisa 15">
+                    <img src="assets/imgs/Camisas/Camisa_jogador_rodriguinho.PNG" alt="Camisa 15">
                 </div>
                 <p>Nome completo: Rodrigo Huendra Almeida Mendonça</p>
                 <p>Altura: 1.85m</p>
@@ -403,11 +407,11 @@
         <div class="divLinhaAtleta">
             <div class="divAtleta">
                 <div class="identificacao">
-                    <img src="imgs/Jogadores/andre_silva_elenco.png" alt="André Silva">
+                    <img src="assets/imgs/Jogadores/andre_silva_elenco.png" alt="André Silva">
                     <div class="divNome">
                         <h1>André Silva</h1>
                     </div>
-                    <img src="imgs/Camisas/Camisa_jogador_andre_silva.PNG" alt="Camisa 17">
+                    <img src="assets/imgs/Camisas/Camisa_jogador_andre_silva.PNG" alt="Camisa 17">
                 </div>
                 <p>Nome completo: André Oliveira e Silva</p>
                 <p>Altura: 1.81m</p>
@@ -417,11 +421,11 @@
             </div>
             <div class="divAtleta">
                 <div class="identificacao">
-                    <img src="imgs/Jogadores/calleri_elenco.png" alt="Calleri">
+                    <img src="assets/imgs/Jogadores/calleri_elenco.png" alt="Calleri">
                     <div class="divNome">
                         <h1>Calleri</h1>
                     </div>
-                    <img src="imgs/Camisas/Camisa_jogador_calleri.PNG" alt="Camisa 9">
+                    <img src="assets/imgs/Camisas/Camisa_jogador_calleri.PNG" alt="Camisa 9">
                 </div>
                 <p>Nome completo: Jonathan Calleri</p>
                 <p>Altura: 1.81m</p>
@@ -433,11 +437,11 @@
         <div class="divLinhaAtleta">
             <div class="divAtleta">
                 <div class="identificacao">
-                    <img src="imgs/Jogadores/ferreirinha_elenco.png" alt="Ferreirinha">
+                    <img src="assets/imgs/Jogadores/ferreirinha_elenco.png" alt="Ferreirinha">
                     <div class="divNome">
                         <h1>Ferreirinha</h1>
                     </div>
-                    <img src="imgs/Camisas/Camisa_jogador_ferreirinha.PNG" alt="Camisa 11">
+                    <img src="assets/imgs/Camisas/Camisa_jogador_ferreirinha.PNG" alt="Camisa 11">
                 </div>
                 <p>Nome completo: Aldemir dos Santos Ferreira</p>
                 <p>Altura: 1.76m</p>
@@ -447,11 +451,11 @@
             </div>
             <div class="divAtleta">
                 <div class="identificacao">
-                    <img src="imgs/Jogadores/henrique_carmo_elenco.png" alt="Henrique Carmo">
+                    <img src="assets/imgs/Jogadores/henrique_carmo_elenco.png" alt="Henrique Carmo">
                     <div class="divNome">
                         <h1>Henrique Carmo</h1>
                     </div>
-                    <img src="imgs/Camisas/Camisa_jogador_henrique_carmo.PNG" alt="Camisa 37">
+                    <img src="assets/imgs/Camisas/Camisa_jogador_henrique_carmo.PNG" alt="Camisa 37">
                 </div>
                 <p>Nome completo: Henrique Fabiano do Carmo</p>
                 <p>Altura: 1.74m</p>
@@ -463,11 +467,11 @@
         <div class="divLinhaAtleta">
             <div class="divAtleta">
                 <div class="identificacao">
-                    <img src="imgs/Jogadores/lucas_ferreira_elenco.png" alt="Lucas Ferreira">
+                    <img src="assets/imgs/Jogadores/lucas_ferreira_elenco.png" alt="Lucas Ferreira">
                     <div class="divNome">
                         <h1>Lucas Ferreira</h1>
                     </div>
-                    <img src="imgs/Camisas/Camisa_jogador_lucas_ferreira.PNG" alt="Camisa 48">
+                    <img src="assets/imgs/Camisas/Camisa_jogador_ferreirinha.PNG" alt="Camisa 48">
                 </div>
                 <p>Nome completo: Lucas dos Santos Ferreira</p>
                 <p>Altura: 1.87m</p>
@@ -477,11 +481,11 @@
             </div>
             <div class="divAtleta">
                 <div class="identificacao">
-                    <img src="imgs/Jogadores/lucas_moura_elenco.png" alt="Lucas Moura">
+                    <img src="assets/imgs/Jogadores/lucas_moura_elenco.png" alt="Lucas Moura">
                     <div class="divNome">
                         <h1>Lucas Moura</h1>
                     </div>
-                    <img src="imgs/Camisas/Camisa_jogador_lucas_moura.PNG" alt="Camisa 7">
+                    <img src="assets/imgs/Camisas/Camisa_jogador_lucas_moura.PNG" alt="Camisa 7">
                 </div>
                 <p>Nome completo: Lucas Rodrigues Moura da Silva</p>
                 <p>Altura: 1.72m</p>
@@ -493,11 +497,11 @@
         <div class="divLinhaAtleta" id="ultimaLinha">
             <div class="divAtleta">
                 <div class="identificacao">
-                    <img src="imgs/Jogadores/luciano_elenco.png" alt="Luciano">
+                    <img src="assets/imgs/Jogadores/luciano_elenco.png" alt="Luciano">
                     <div class="divNome">
                         <h1>Luciano</h1>
                     </div>
-                    <img src="imgs/Camisas/Camisa_jogador_luciano.PNG" alt="Camisa 10">
+                    <img src="assets/imgs/Camisas/Camisa_jogador_luciano.PNG" alt="Camisa 10">
                 </div>
                 <p>Nome completo: Luciano da Rocha Neves</p>
                 <p>Altura: 1.81m</p>
@@ -507,11 +511,11 @@
             </div>
             <div class="divAtleta">
                 <div class="identificacao">
-                    <img src="imgs/Jogadores/ryan_francisco_elenco.png" alt="Ryan Francisco">
+                    <img src="assets/imgs/Jogadores/ryan_francisco_elenco.png" alt="Ryan Francisco">
                     <div class="divNome">
                         <h1>Ryan Francisco</h1>
                     </div>
-                        <img src="imgs/Camisas/Camisa_jogador_ryan_francisco.PNG" alt="Camisa 49">
+                        <img src="assets/imgs/Camisas/Camisa_jogador_ryan_francisco.PNG" alt="Camisa 49">
                     </div>
                     <p>Nome completo: Ryan Francisco Rodrigues dos Santos Silva</p>
                     <p>Altura: 1.75m</p>
@@ -523,20 +527,24 @@
     </div>
     <div class="footer">
         <div class="logo">
-            <img src="imgs/Escudo_SPFC.png" alt="">
+            <img src="assets/imgs/Escudo_SPFC.png" alt="">
             <h1>São Paulo Futebol Clube</h1>
         </div>
         <div class="redes-sociais">
             <h4>Redes sociais</h4>
             <ul>
-                <li><a href="https://www.instagram.com/saopaulofc/" target="_blank"><img src="imgs/instagram.png"
+                <li><a href="https://www.instagram.com/saopaulofc/" target="_blank"><img src="assets/imgs/instagram.png"
                             alt=""></a></li>
                 <li><a href="https://youtube.com/@saopaulofc?si=m9PlbScdJMwnmjd2" target="_blank"><img
-                            src="imgs/youtube.png" alt=""></a></li>
-                <li><a href="https://x.com/SaoPauloFC" target="_blank"><img src="imgs/X.png" alt=""></a></li>
+                            src="assets/imgs/youtube.png" alt=""></a></li>
+                <li><a href="https://x.com/SaoPauloFC" target="_blank"><img src="assets/imgs/X.png" alt=""></a></li>
             </ul>
         </div>
     </div>
 </body>
+
+<script>
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+</script>
 
 </html>

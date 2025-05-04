@@ -1,19 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>SPFCpedia - Login</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" type="imgs/png" href="imgs/Escudo_SPFC.ico">
+
+    <script src="./js/sessao.js"></script>
+
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="icon" href="./assets/imgs/Escudo_SPFC.ico" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
 
 <body>
+
+    <!--Header-->
+
     <div class="header">
         <div class="escudo_nome">
             <a href="index.html">
-                <img src="imgs/Escudo_SPFC.png" alt="">
+                <img src="assets/imgs/Escudo_SPFC.png" alt="Escudo do SPFC">
                 <h2>SPFCpedia</h2>
             </a>
         </div>
@@ -22,21 +31,15 @@
                 <a href="index.html">Home</a>
             </li>
             <li>
-                <a href="titulos.html">Títulos</a>
-            </li>
-            <li>
-                <a href="idolos.html">Ídolos</a>
-            </li>
-            <li>
-                <a href="morumbi.html">Morumbi</a>
-            </li>
-            <li>
-                <a href="elenco.html">Elenco</a>
-            </li>
-            <li>
                 <a href="login.html">Login</a>
             </li>
         </ul>
+    </div>
+
+    <div class="alerta_erro">
+        <div class="card_erro" id="cardErro">
+            <span id="mensagem_erro"></span>
+        </div>
     </div>
     <div class="container">
         <div class="enunciado">
@@ -45,7 +48,7 @@
         <div class="card">
             <div class="formulario">
                 <div class="logoenome">
-                    <img src="imgs/Escudo_SPFC.png" alt="Escudo do SPFC">
+                    <img src="assets/imgs/Escudo_SPFC.png" alt="Escudo do SPFC">
                     <h1>SPFCpedia</h1>
                 </div>
                 <div class="inputs">
@@ -53,28 +56,108 @@
                     <input type="email" id="ipt_email" placeholder="E-mail">
                     <h1>Senha:</h1>
                     <input type="password" id="ipt_senha" placeholder="*********"><br>
-                    <button>Entrar</button>
-                    <p>Não possui uma conta?<a href="cadastro.html">Cadastre-se!</a></p>
+                    <button onclick="entrar()">Entrar</button>
+                    <p>Não possui uma conta? <a href="cadastro.html">Cadastre-se!</a></p>
                 </div>
             </div>
         </div>
     </div>
+
+    <!--footer inicio-->
     <div class="footer">
         <div class="logo">
-            <img src="imgs/Escudo_SPFC.png" alt="">
+            <img src="assets/imgs/Escudo_SPFC.png" alt="Escudo do SPFC">
             <h1>São Paulo Futebol Clube</h1>
         </div>
         <div class="redes-sociais">
             <h4>Redes sociais</h4>
             <ul>
-                <li><a href="https://www.instagram.com/saopaulofc/" target="_blank"><img src="imgs/instagram.png"
+                <li><a href="https://www.instagram.com/saopaulofc/" target="_blank"><img src="assets/imgs/instagram.png"
                             alt=""></a></li>
                 <li><a href="https://youtube.com/@saopaulofc?si=m9PlbScdJMwnmjd2" target="_blank"><img
-                            src="imgs/youtube.png" alt=""></a></li>
-                <li><a href="https://x.com/SaoPauloFC" target="_blank"><img src="imgs/X.png" alt=""></a></li>
+                            src="assets/imgs/youtube.png" alt=""></a></li>
+                <li><a href="https://x.com/SaoPauloFC" target="_blank"><img src="assets/imgs/X.png" alt=""></a></li>
             </ul>
         </div>
-    </div>
+        <!--footer fim-->
+
 </body>
 
 </html>
+
+<script>
+
+
+    function entrar() {
+        // aguardar();
+
+        var emailVar = ipt_email.value;
+        var senhaVar = ipt_senha.value;
+
+        if (emailVar == "" || senhaVar == "") {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "Preencha todos os campos.";
+            finalizarAguardar();
+            return false;
+        }
+        else {
+            setInterval(sumirMensagem, 5000)
+        }
+
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.id;
+
+                    setTimeout(function () {
+                        window.location.href = "indexComLogin.html";
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                cardErro.style.display = "block";
+                mensagem_erro.innerHTML =
+                    "Email e/ou senha inválido(s)";
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    // finalizarAguardar(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+    function sumirMensagem() {
+        cardErro.style.display = "none"
+    }
+
+</script>

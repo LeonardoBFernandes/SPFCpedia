@@ -49,10 +49,22 @@ body {
     width: 800px;
 }
 
+.header button {
+    border-radius: 10px;
+    background-color: black;
+    color: white;
+    height: 30px;
+    width: 150px;
+    border: solid 2px white;
+    font-family: "Pridi", serif;
+    font-weight: bold;
+    cursor: pointer;
+}
+
 .container {
     margin-top: 100px;
     text-align: center;
-    background-image: url(imgs/morumbi-fundo.jpg);
+    background-image: url('../assets/imgs/morumbi-fundo.jpg');
     background-repeat: no-repeat; /* --> Imagem de fundo não se repete */
     background-attachment: fixed; /* --> Imagem de fundo fica fixa */
     padding-bottom: 20px;
@@ -241,7 +253,36 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: gray;
+    background-color: red;
+    border: solid 2px white;
     border-radius: 10px;
     padding: 0px 20px 20px 20px;
 }
+
+.container .card .formulario .inputs .sociotorcedor {
+    display: flex;
+}
+
+.alerta_erro{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+  }
+  
+  .card_erro {
+    display: none;
+    background-color: white;
+    color: black;
+    width: 230px;
+    position: fixed;
+    border-radius: 4px;
+    border: red 2px solid;
+    padding: 10px;
+    margin-right: 0;
+    text-align: center;
+  }
+  
+  .card_erro #mensagem_erro{
+    font-weight: 500;
+    font-size: 20px;
+  }
