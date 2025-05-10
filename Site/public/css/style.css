@@ -61,17 +61,24 @@ body {
     cursor: pointer;
 }
 
+.header .selecionado {
+    color: black;
+    font-weight: bold;
+}
+
 .container {
     margin-top: 100px;
     text-align: center;
     background-image: url('../assets/imgs/morumbi-fundo.jpg');
-    background-repeat: no-repeat; /* --> Imagem de fundo não se repete */
-    background-attachment: fixed; /* --> Imagem de fundo fica fixa */
+    background-repeat: no-repeat;
+    /* --> Imagem de fundo não se repete */
+    background-attachment: fixed;
+    /* --> Imagem de fundo fica fixa */
     padding-bottom: 20px;
 }
 
 /* RODAPÉ */
-.footer{
+.footer {
     color: white;
     background-color: red;
     height: 100px;
@@ -82,7 +89,7 @@ body {
     border-top: solid 5px white;
 }
 
-.redes-sociais{
+.redes-sociais {
     display: flex;
     flex-direction: column;
     height: 100px;
@@ -99,7 +106,7 @@ body {
     width: 150px;
 }
 
-.footer ul li img{
+.footer ul li img {
     width: 25px;
 }
 
@@ -110,7 +117,7 @@ body {
     align-items: center;
 }
 
-.footer .logo img{
+.footer .logo img {
     width: 90px;
 }
 
@@ -218,7 +225,7 @@ body {
     align-items: center;
 }
 
-.container .card .formulario .inputs input{
+.container .card .formulario .inputs input {
     border-radius: 10px;
     height: 30px;
     width: 400px;
@@ -226,7 +233,7 @@ body {
     font-family: "Pridi", serif;
 }
 
-.container .card .formulario .inputs select{
+.container .card .formulario .inputs select {
     border-radius: 10px;
     height: 30px;
     width: 400px;
@@ -263,13 +270,13 @@ body {
     display: flex;
 }
 
-.alerta_erro{
+.alerta_erro {
     display: flex;
     flex-direction: row-reverse;
     justify-content: center;
-  }
-  
-  .card_erro {
+}
+
+.card_erro {
     display: none;
     background-color: white;
     color: black;
@@ -280,20 +287,126 @@ body {
     padding: 10px;
     margin-right: 0;
     text-align: center;
-  }
-  
-  .card_erro #mensagem_erro{
+}
+
+.card_erro #mensagem_erro {
     font-weight: 500;
     font-size: 20px;
-  }
+}
 
-  /* INDEX */
-  .banner {
+/* INDEX */
+.banner {
     margin-top: 100px;
-  }
+}
 
-  .banner img {
+.banner img {
     width: 100%;
     height: 450px;
-  }
+}
 
+/* QUIZ */
+.container .divQuiz {
+    display: flex;
+    justify-content: center;
+}
+
+.container .divQuiz #pontuacaoEJogo {
+    width: 80%;
+    justify-content: center;
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+    border: solid 5px white;
+    color: white;
+    height: 530px;
+}
+
+.container .divQuiz #pontuacaoEJogo #btnIniciarQuiz {
+    border-radius: 10px;
+    background-color: red;
+    border: solid 2px white;
+    color: white;
+    height: 100px;
+    width: 400px;
+    text-align: center;
+    font-family: "Pridi", serif;
+    font-weight: bold;
+    font-size: 50px;
+    cursor: pointer;
+}
+
+.container .divQuiz #pontuacaoEJogo button {
+    border-radius: 10px;
+    background-color: red;
+    border: solid 2px white;
+    color: white;
+    height: 50px;
+    width: 200px;
+    text-align: center;
+    font-family: "Pridi", serif;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.container .divQuiz #pontuacao {
+    flex-direction: column;
+    border-bottom: solid 5px white;
+    border-radius: 4px;
+    background-color: red;
+    font-size: large;
+    padding-top: 10px;
+}
+
+.container .divQuiz #jogo {
+    flex-direction: column;
+    font-size: larger;
+    padding-top: 30px;
+}
+
+.container .divQuiz #botoes {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container .divQuiz #botoes .botoesQuiz {
+    display: flex;
+    width: 700px;
+    align-items: center;
+    justify-content: space-evenly;
+    padding-top: 20px;
+    padding-bottom: 30px;
+}
+
+.flex-colunar {
+    display: flex;
+    flex-direction: column;
+}
+
+.padding-8 {
+    padding: 8px;
+}
+
+.text-bold {
+    font-weight: bold;
+}
+
+.text-success-with-bg {
+    color: var(--success-dark);
+    background-color: var(--success-light);
+}
+
+.text-warning-with-bg {
+    color: var(--warning-dark);
+    background-color: var(--warning-light);
+}
+
+.text-danger-with-bg {
+    color: var(--danger-dark);
+    background-color: var(--danger-light);
+}
+
+.text-new-gray {
+    color: var(--new-gray);
+}
