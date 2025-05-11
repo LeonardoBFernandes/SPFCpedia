@@ -5,12 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SPFCpedia - Quiz</title>
+    <script src="./js/sessao.js"></script>
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="./assets/imgs/Escudo_SPFC.ico" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
 
-<body onload="onloadEsconder()">
+<body onload="onloadEsconder(); melhorTentativa()">
     <div class="header">
         <div class="escudo_nome">
             <a href="indexComLogin.html">
@@ -47,12 +48,24 @@
         <div class="enunciado">
             <h1>Quiz</h1>
         </div>
+        <div class="displayExplicacao">
+            <div id="explicacaoQuiz">
+                <div class="expQuiz1">
+                    <h1>Você realmente conhece o São Paulo Futebol Clube?</h1>
+                    <h2>Teste seus conhecimentos aqui!</h2>
+                </div>
+                <div class="expQuiz2">
+                    <h2>Sua pontuação máxima:</h2>
+                    <p id="exibirPontuacao"></p>
+                </div>
+            </div>
+        </div>
         <div class="divQuiz">
             <div id="pontuacaoEJogo">
                 <div id="divBtnIniciar">
                     <button id="btnIniciarQuiz" onclick="iniciarQuiz()">INICIAR QUIZ</button>
                 </div>
-                
+
                 <div id="pontuacao" class="border-primary">
                     <div id="pontuacaoDuranteJogo" class="flex-colunar padding-8">
                         <span>Quantidade de acertos: <span id="spanCertas">0</span></span>
@@ -61,22 +74,23 @@
                     <div id="pontuacaoFinalJogo" class="flex-colunar padding-8">
                     </div>
                 </div>
-                
+
                 <div id="jogo" class="flex-colunar border-secondary">
-                    
+
                     <div id="infoQuestao" class="padding-8">
-                        <span>Questão atual: <span id="spanNumeroDaQuestaoAtual"></span> de <span id="qtdQuestoes"></span>
-                        questões.</span>
+                        <span>Questão atual: <span id="spanNumeroDaQuestaoAtual"></span> de <span
+                                id="qtdQuestoes"></span>
+                            questões.</span>
                     </div>
-                    
+
                     <div id="perguntaDaQuestaoAtual" class="padding-8">
                         <span id="spanQuestaoExibida" class="text-bold"></span>
                     </div>
-                    
+
                     <div id="infoAlternativas" class="padding-8">
                         <span><em>Escolha uma opção dentre as abaixo:</em></span>
                     </div>
-                    
+
                     <div id="opcoes" class="flex-colunar padding-8">
                         <span>
                             <input type="radio" id="primeiraOpcao" name="option" class="radio" value="alternativaA" />
@@ -124,33 +138,129 @@
 </body>
 
 <script>
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
     const listaDeQuestoes = [
 
         {
-            pergunta: "Qual mês tem 30 dias?",
-            alternativaA: "Janeiro",
-            alternativaB: "Dezembro",
-            alternativaC: "Junho",
-            alternativaD: "Agosto",
+            pergunta: "Em que ano o São Paulo Futebol Clube foi fundado?",
+            alternativaA: "1919",
+            alternativaB: "1930",
+            alternativaC: "1935",
+            alternativaD: "1940",
+            alternativaCorreta: "alternativaB"
+        },
+        {
+            pergunta: "Qual é o estádio oficial do São Paulo FC?",
+            alternativaA: "Arena Barueri",
+            alternativaB: "Morumbi",
+            alternativaC: "Pacaembu",
+            alternativaD: "Allianz Parque",
+            alternativaCorreta: "alternativaB"
+        },
+        {
+            pergunta: "Quantas vezes o São Paulo venceu a Copa Libertadores?",
+            alternativaA: "2",
+            alternativaB: "4",
+            alternativaC: "3",
+            alternativaD: "5",
             alternativaCorreta: "alternativaC"
         },
-
         {
-            pergunta: "Quantas horas tem em um dia?",
-            alternativaA: "30 horas",
-            alternativaB: "38 horas",
-            alternativaC: "48 horas",
-            alternativaD: "24 horas",
+            pergunta: "Quem é o maior artilheiro da história do São Paulo?",
+            alternativaA: "Raí",
+            alternativaB: "Serginho Chulapa",
+            alternativaC: "Rogério Ceni",
+            alternativaD: "França",
+            alternativaCorreta: "alternativaB"
+        },
+        {
+            pergunta: "Em que ano o São Paulo venceu sua primeira Copa Intercontinental?",
+            alternativaA: "1991",
+            alternativaB: "1993",
+            alternativaC: "1992",
+            alternativaD: "2005",
+            alternativaCorreta: "alternativaC"
+        },
+        {
+            pergunta: "Qual jogador é o maior goleiro-artilheiro do mundo e ídolo do São Paulo?",
+            alternativaA: "Zetti",
+            alternativaB: "Rogério Ceni",
+            alternativaC: "Marcos",
+            alternativaD: "Dida",
+            alternativaCorreta: "alternativaB"
+        },
+        {
+            pergunta: "Quantos títulos brasileiros o São Paulo tem até 2024?",
+            alternativaA: "5",
+            alternativaB: "7",
+            alternativaC: "6",
+            alternativaD: "8",
+            alternativaCorreta: "alternativaC"
+        },
+        {
+            pergunta: "Qual foi o adversário do São Paulo na final da Libertadores de 2005?",
+            alternativaA: "Santos",
+            alternativaB: "Internacional",
+            alternativaC: "Athletico-PR",
+            alternativaD: "River Plate",
+            alternativaCorreta: "alternativaC"
+        },
+        {
+            pergunta: "O São Paulo é dono de qual marca registrada no Brasil?",
+            alternativaA: "Nação Tricolor",
+            alternativaB: "Sócio Torcedor",
+            alternativaC: "Soberano FC",
+            alternativaD: "Morumbi Experience",
+            alternativaCorreta: "alternativaB"
+        },
+        {
+            pergunta: "Quem foi o técnico do São Paulo no tricampeonato brasileiro (2006-2008)?",
+            alternativaA: "Muricy Ramalho",
+            alternativaB: "Telê Santana",
+            alternativaC: "Oswaldo de Oliveira",
+            alternativaD: "Ricardo Gomes",
+            alternativaCorreta: "alternativaA"
+        },
+        {
+            pergunta: "Quantos títulos mundiais o São Paulo conquistou?",
+            alternativaA: "1",
+            alternativaB: "2",
+            alternativaC: "4",
+            alternativaD: "3",
             alternativaCorreta: "alternativaD"
         },
-
         {
-            pergunta: "Qual destes números é ímpar?",
-            alternativaA: "Dez",
-            alternativaB: "Doze",
-            alternativaC: "Oito",
-            alternativaD: "Onze",
+            pergunta: "Quem foi o técnico nas conquistas da Libertadores de 1992 e 1993?",
+            alternativaA: "Cilinho",
+            alternativaB: "Pepe",
+            alternativaC: "Telê Santana",
+            alternativaD: "Muricy Ramalho",
+            alternativaCorreta: "alternativaC"
+        },
+        {
+            pergunta: "Em qual competição o São Paulo conquistou seu primeiro título internacional?",
+            alternativaA: "Recopa Sul-Americana",
+            alternativaB: "Copa Libertadores",
+            alternativaC: "Copa Conmebol",
+            alternativaD: "Copa Ouro",
+            alternativaCorreta: "alternativaB"
+        },
+        {
+            pergunta: "Qual é o mascote oficial do São Paulo?",
+            alternativaA: "Leão",
+            alternativaB: "Tigre",
+            alternativaC: "Mosqueteiro",
+            alternativaD: "Santo Paulo",
             alternativaCorreta: "alternativaD"
+        },
+        {
+            pergunta: "Qual foi o maior público da história do Morumbi, em jogo do São Paulo?",
+            alternativaA: "100 mil pessoas",
+            alternativaB: "138 mil pessoas",
+            alternativaC: "120 mil pessoas",
+            alternativaD: "90 mil pessoas",
+            alternativaCorreta: "alternativaB"
         }
 
     ]
@@ -163,6 +273,43 @@
     let erradas = 0
     let quantidadeDeQuestoes = listaDeQuestoes.length
     // let isUltima = numeroDaQuestaoAtual == quantidadeDeQuestoes-1 ? true : false
+
+    function melhorTentativa() {
+        fetch("/quiz/listar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                id: sessionStorage.ID_USUARIO
+            }),
+        })
+            .then(function (resposta) {
+
+                if (resposta.ok) {
+                    resposta.json().then(function (resposta) {
+                        console.log(resposta);
+                        sessionStorage.PONTUACAO = resposta.pontuacao;
+                    });
+                    // resposta.json().then(json => {
+                    // });
+                }
+                if (sessionStorage.PONTUACAO == undefined) {
+                    exibirPontuacao.innerHTML = `0`
+                } else {
+                    exibirPontuacao.innerHTML = `${sessionStorage.PONTUACAO}`
+                }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+                // finalizarAguardar();
+            });
+
+        return false;
+    }
+
 
     function onloadEsconder() {
         document.getElementById('pontuacao').style.display = "none"
@@ -337,6 +484,19 @@
 
         btnSubmeter.disabled = true
         // btnConcluir.disabled = true
+
+        fetch("/quiz/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/quiz.js
+                id: sessionStorage.ID_USUARIO,
+                pontuacao: pontuacaoFinal
+            }),
+        })
 
     }
 </script>

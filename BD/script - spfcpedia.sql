@@ -32,6 +32,15 @@ constraint FK_planoST_usuario foreign key (fk_idPlanoST) references planoST(idpl
 constraint FK_estado_usuario foreign key (fk_idEstado) references estado(idEstado)
 );
 
+create table tentativaQuiz (
+idTentativa int primary key auto_increment,
+fk_idusuario int not null,
+dataHoraTentativa datetime default current_timestamp(),
+pontuacao int not null,
+constraint chk_pontuacao check (pontuacao between 0 and 15),
+constraint fk_usuario_tentativaQuiz foreign key (fk_idusuario) references usuario(idUsuario)
+);
+
 -- inserindo dados na tabela de estados
 insert into estado (idEstado, nome, sigla, regiao) values
 (1,  'Acre', 'AC', 'Norte'),
