@@ -39,7 +39,7 @@ body {
 }
 
 .header .escudo_nome img {
-    width: 85px;
+    width: 95px;
 }
 
 .header .nav_links {
@@ -302,6 +302,115 @@ body {
 .banner img {
     width: 100%;
     height: 450px;
+}
+
+.social .texto {
+    margin: 40px 30px 40px 50px;
+    width: 40%;
+}
+
+.social .historia {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: black;
+    color: white;
+    font-size: 18px;
+    border-bottom: solid 5px red;
+}
+
+.social .historia a {
+    color: white;
+}
+
+.social .historia img {
+    width: 40%;
+    margin: 40px 30px 40px 50px;
+    border-radius: 10px;
+    border: solid 3px white;
+}
+
+.social .titulos {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row-reverse;
+    border-bottom: solid 5px black;
+    text-align: right;
+    font-size: 18px;
+}
+
+.social .titulos a {
+    color: black;
+}
+
+.social .titulos img {
+    width: 40%;
+    margin: 40px 30px 40px 50px;
+    border-radius: 10px;
+    border: solid 3px red;
+}
+
+.social .idolos {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: red;
+    color: white;
+    font-size: 18px;
+    border-bottom: solid 5px white;
+}
+
+.social .idolos a {
+    color: white;
+}
+
+.social .idolos img {
+    width: 40%;
+    margin: 40px 30px 40px 50px;
+    border-radius: 10px;
+    border: solid 3px black;
+}
+
+.social .elenco {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row-reverse;
+    align-items: center;
+    background-color: black;
+    color: white;
+    font-size: 18px;
+    border-bottom: solid 5px red;
+    text-align: right;
+}
+
+.social .elenco a {
+    color: white;
+}
+
+.social .elenco img {
+    width: 40%;
+    margin: 40px 30px 40px 50px;
+    border-radius: 10px;
+    border: solid 3px white;
+}
+
+.social .quiz {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 18px;
+}
+
+.social .quiz a {
+    color: black;
+}
+
+.social .quiz img {
+    width: 40%;
+    margin: 40px 30px 40px 50px;
+    border-radius: 10px;
+    border: solid 3px red;
 }
 
 /* QUIZ */
