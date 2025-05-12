@@ -81,12 +81,16 @@ body {
 .footer {
     color: white;
     background-color: red;
-    height: 100px;
+    height: 120px;
     display: flex;
     align-items: center;
     justify-content: space-around;
     left: 0;
     border-top: solid 5px white;
+}
+
+.creditos {
+    text-align: center;
 }
 
 .redes-sociais {
