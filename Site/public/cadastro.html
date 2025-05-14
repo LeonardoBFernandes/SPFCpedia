@@ -57,6 +57,41 @@
           <input type="text" id="ipt_sobrenome" placeholder="Sobrenome">
           <h1>Data de Nascimento:</h1>
           <input type="date" id="ipt_dtNasc">
+          <h1>Jogador Favorito:</h1>
+          <select id="select_jogadorFavorito">
+            <option value="vazio">Selecione seu jogador favorito</option>
+            <option value="1">Jandrei</option>
+            <option value="2">Leandro</option>
+            <option value="3">Rafael</option>
+            <option value="4">Young</option>
+            <option value="5">Alan Franco</option>
+            <option value="6">Arboleda</option>
+            <option value="7">Cédric</option>
+            <option value="8">Enzo Diaz</option>
+            <option value="9">Ferraresi</option>
+            <option value="10">Igão</option>
+            <option value="11">Igor Vinícius</option>
+            <option value="12">Patryck</option>
+            <option value="13">Ruan</option>
+            <option value="14">Sabino</option>
+            <option value="15">Wendell</option>
+            <option value="16">Alisson</option>
+            <option value="17">Alves</option>
+            <option value="18">Bobadilla</option>
+            <option value="19">Luiz Gustavo</option>
+            <option value="20">Marcos Antônio</option>
+            <option value="21">Oscar</option>
+            <option value="22">Pablo Maia</option>
+            <option value="23">Rodriguinho</option>
+            <option value="24">André Silva</option>
+            <option value="25">Calleri</option>
+            <option value="26">Ferreirinha</option>
+            <option value="27">Henrique Carmo</option>
+            <option value="28">Lucas Ferreira</option>
+            <option value="29">Lucas Moura</option>
+            <option value="30">Luciano</option>
+            <option value="31">Ryan Francisco</option>
+          </select>
           <h1>É sócio-torcedor?</h1>
           <div class="sociotorcedor">
             <div>
@@ -178,6 +213,7 @@
     var nomeVar = ipt_nome.value;
     var sobrenomeVar = ipt_sobrenome.value;
     var dtNascVar = ipt_dtNasc.value;
+    var jogadorFavoritoVar = select_jogadorFavorito.value;
     var planoSTVar = '';
     if (socioSim == true) {
       planoSTVar = select_plano.value;
@@ -195,6 +231,7 @@
       nomeVar == "" ||
       sobrenomeVar == "" ||
       dtNascVar == "" ||
+      jogadorFavoritoVar == "vazio" ||
       planoSTVar == "vazio" ||
       planoSTVar == "" ||
       cidadeVar == "" ||
@@ -280,6 +317,7 @@
         nomeServer: nomeVar,
         sobrenomeServer: sobrenomeVar,
         dtNascServer: dtNascVar,
+        jogadorFavoritoServer: jogadorFavoritoVar,
         planoSTServer: planoSTVar,
         cidadeServer: cidadeVar,
         estadoServer: estadoVar,

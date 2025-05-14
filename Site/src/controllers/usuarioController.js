@@ -46,6 +46,7 @@ function cadastrar(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     var nome = req.body.nomeServer;
     var sobrenome = req.body.sobrenomeServer;
+    var jogadorFavorito = req.body.jogadorFavoritoServer;
     var dtNasc = req.body.dtNascServer;
     var planoST = req.body.planoSTServer;
     var cidade = req.body.cidadeServer;
@@ -57,19 +58,21 @@ function cadastrar(req, res) {
     if (nome == undefined) {
         res.status(400).send("Seu nome está undefined!");
     } else if (sobrenome == undefined) {
-        res.status(400).send("Seu email está undefined!");
+        res.status(400).send("Seu sobrenome está undefined!");
     } else if (dtNasc == undefined) {
-        res.status(400).send("Seu email está undefined!");
+        res.status(400).send("Sua data de nascimento está undefined!");
+    } else if (jogadorFavorito == undefined) {
+        res.status(400).send("Seu jogador favorito está undefined!");
     } else if (cidade == undefined) {
-        res.status(400).send("Seu email está undefined!");
+        res.status(400).send("Sua cidade está undefined!");
     } else if (estado == undefined) {
-        res.status(400).send("Seu email está undefined!");
+        res.status(400).send("Seu estado está undefined!");
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está undefined!");
     } else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nome, sobrenome, dtNasc, planoST, cidade, estado, email, senha)
+        usuarioModel.cadastrar(nome, sobrenome, dtNasc, jogadorFavorito, planoST, cidade, estado, email, senha)
             .then(
                 function (resultado) {
                     res.json(resultado);
