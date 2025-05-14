@@ -18,6 +18,17 @@ sigla char(2),
 regiao varchar(15)
 );
 
+create table jogador (
+idJogador int primary key auto_increment,
+apelido varchar(30) not null,
+nome varchar(150) not null,
+posicao varchar(20) not null,
+pais varchar(40) not null,
+cidadeOrigem varchar(50) not null,
+fk_idEstado int,
+constraint FK_estado_jogador foreign key (fk_idEstado) references estado(idEstado)
+);
+
 create table usuario (
 idUsuario int primary key auto_increment,
 nome varchar(30) not null,
@@ -28,8 +39,10 @@ cidade varchar(50) not null,
 fk_idEstado int not null,
 email varchar(150) not null,
 senha varchar(100) not null,
+fk_jogadorFavorito int not null,
 constraint FK_planoST_usuario foreign key (fk_idPlanoST) references planoST(idplanoST),
-constraint FK_estado_usuario foreign key (fk_idEstado) references estado(idEstado)
+constraint FK_estado_usuario foreign key (fk_idEstado) references estado(idEstado),
+constraint FK_jogador_usuario foreign key (fk_jogadorFavorito) references jogador(idJogador)
 );
 
 create table tentativaQuiz (
@@ -79,3 +92,56 @@ insert into planoST (idPlanoST, nome, nivel_acumuloPontos, prioridade_compradeIn
 (4, 'Preto', 3, 2, 2, 1),
 (5, 'Tricolor', 4, 3, 2, 1),
 (6, 'Diamante', 5, 4, 3, 2);
+
+-- inserindo dados na tabela de jogadores
+insert into jogador (apelido, nome, posicao, pais, cidadeOrigem, fk_idEstado) values
+('Jandrei', 'Jandrei Chitolina Carniel', 'Goleiro', 'Brasil', 'Itaqui', 21),
+('Leandro', 'Leandro Mathias Silva Bueno', 'Goleiro', 'Brasil', 'Campinas', 25),
+('Rafael', 'Rafael Pires Monteiro', 'Goleiro', 'Brasil', 'Coronel Fabriciano', 13),
+('Young', 'Young Navarro Moraes', 'Goleiro', 'Brasil', 'Catanduva', 25),
+('Alan Franco', 'Alan Javier Franco', 'Defensor', 'Argentina', 'Avellaneda', null),
+('Arboleda', 'Robert Abel Arboleda Escobar', 'Defensor', 'Equador', 'Esmeraldas', null),
+('Cédric', 'Cédric Ricardo Alves Soares', 'Defensor', 'Portugal / Alemanha', 'Singen', null),
+('Enzo Díaz', 'Enzo Hernán Díaz', 'Defensor', 'Argentina', 'Las Toscas', null),
+('Ferraresi', 'Nahuel Adolfo Ferraresi Hernández', 'Defensor', 'Venezuela', 'San Cristóbal', null),
+('Igão', 'Igor Odoni Gomes', 'Defensor', 'Brasil', 'São Paulo', 25),
+('Igor Vinícius', 'Igor Vinícius de Souza', 'Defensor', 'Brasil', 'Sinop', 11),
+('Patryck', 'Patryck Lanza dos Reis', 'Defensor', 'Brasil', 'Mogi Mirim', 11),
+('Ruan', 'Ruan Tressoldi Netto', 'Defensor', 'Brasil', 'Tramandaí', 21),
+('Sabino', 'José Sabino Chagas Monteiro', 'Defensor', 'Brasil', 'Brasília', 7),
+('Wendell', 'Wendell Nascimento Borges', 'Defensor', 'Brasil', 'Fortaleza', 6),
+('Alisson', 'Alisson Euler de Freitas Castro', 'Meio-campista', 'Brasil', 'Rio Pomba', 13),
+('Alves', 'Matheus Alves Nascimento', 'Meio-campista', 'Brasil', 'São Vicente', 25),
+('Bobadilla', 'Damián Josué Bobadilla Benítez', 'Meio-campista', 'Paraguai', 'Asunción', null),
+('Luiz Gustavo', 'Luiz Gustavo Dias', 'Meio-campista', 'Brasil', 'Pindamonhangaba', 25),
+('Marcos Antônio', 'Marcos Antônio Silva Santos', 'Meio-campista', 'Brasil', 'Poções', 5),
+('Oscar', 'Oscar dos Santos Emboaba Júnior', 'Meio-campista', 'Brasil', 'Americana', 25),
+('Pablo Maia', 'Pablo Gonçalves Maia Fortunato', 'Meio-campista', 'Brasil', 'Brazópolis', 13),
+('Rodriguinho', 'Rodrigo Huendra Almeida Mendonça', 'Meio-campista', 'Brasil', 'Mineiros', 9),
+('André Silva', 'André Oliveira e Silva', 'Atacante', 'Brasil', 'Taboão da Serra', 25),
+('Calleri', 'Jonathan Calleri', 'Atacante', 'Argentina', 'Buenos Aires', null),
+('Ferreirinha', 'Aldemir dos Santos Ferreira', 'Atacante', 'Brasil', 'Dourados', 12),
+('Henrique Carmo', 'Henrique Fabiano do Carmo', 'Atacante', 'Brasil', 'Joinville', 24),
+('Lucas Ferreira', 'Lucas dos Santos Ferreira', 'Atacante', 'Brasil', 'Campos dos Goytacazes', 19),
+('Lucas Moura', 'Lucas Rodrigues Moura da Silva', 'Atacante', 'Brasil', 'São Paulo', 25),
+('Luciano', 'Luciano da Rocha Neves', 'Atacante', 'Brasil', 'Anápolis', 9),
+('Ryan Francisco', 'Ryan Francisco Rodrigues dos Santos Silva', 'Atacante', 'Brasil', 'São Paulo', 25);
+
+-- Para implementar no banco oficial:
+create table jogador (
+idJogador int primary key auto_increment,
+apelido varchar(30) not null,
+nome varchar(150) not null,
+posicao varchar(20) not null,
+pais varchar(40) not null,
+cidadeOrigem varchar(50) not null,
+fk_idEstado int,
+constraint FK_estado_jogador foreign key (fk_idEstado) references estado(idEstado)
+);
+
+alter table usuario add column fk_jogadorFavorito int;
+alter table usuario add constraint FK_jogador_usuario foreign key (fk_jogadorFavorito) references jogador(idJogador);
+
+-- Preciso dar update nos registros dos usuarios já cadastrados
+-- Preciso adicionar campo de jogador favorito no cadastro
+-- Não esquecer de trocar o ambiente no app.js
