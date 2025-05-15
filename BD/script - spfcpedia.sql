@@ -126,22 +126,3 @@ insert into jogador (apelido, nome, posicao, pais, cidadeOrigem, fk_idEstado) va
 ('Lucas Moura', 'Lucas Rodrigues Moura da Silva', 'Atacante', 'Brasil', 'São Paulo', 25),
 ('Luciano', 'Luciano da Rocha Neves', 'Atacante', 'Brasil', 'Anápolis', 9),
 ('Ryan Francisco', 'Ryan Francisco Rodrigues dos Santos Silva', 'Atacante', 'Brasil', 'São Paulo', 25);
-
--- Para implementar no banco oficial:
-create table jogador (
-idJogador int primary key auto_increment,
-apelido varchar(30) not null,
-nome varchar(150) not null,
-posicao varchar(20) not null,
-pais varchar(40) not null,
-cidadeOrigem varchar(50) not null,
-fk_idEstado int,
-constraint FK_estado_jogador foreign key (fk_idEstado) references estado(idEstado)
-);
-
-alter table usuario add column fk_jogadorFavorito int;
-alter table usuario add constraint FK_jogador_usuario foreign key (fk_jogadorFavorito) references jogador(idJogador);
-
--- Preciso dar update nos registros dos usuarios já cadastrados
--- Preciso adicionar campo de jogador favorito no cadastro
--- Não esquecer de trocar o ambiente no app.js
