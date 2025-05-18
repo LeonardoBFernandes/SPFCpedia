@@ -688,3 +688,55 @@ body {
     height: 650px;
     margin-bottom: 30px;
 }
+
+/* TÍTULOS */
+.containerTitulos {
+    margin-top: 100px;
+    text-align: center;
+    background-image: url('../assets/imgs/titulosFundo.png');
+    background-repeat: no-repeat;
+    /* --> Imagem de fundo não se repete */
+    background-attachment: fixed;
+    /* --> Imagem de fundo fica fixa */
+    padding-bottom: 20px;
+}
+
+.containerTitulos .secao {
+    display: flex;
+    justify-content: center;
+    margin-top: 0;
+    background-color: red;
+    color: white;
+    border-radius: 10px;
+    border: solid 5px white;
+    margin: 0px 200px 20px 200px;
+    font-size: 30px;
+}
+
+.containerTitulos .titulos {
+    background-color: black;
+    color: white;
+    border: solid 5px white;
+    border-radius: 10px;
+    margin: 0px 50px 20px 50px;
+    padding: 20px;
+}
+
+.containerTitulos .titulos .competicao {
+    background-color: white;
+    color: black;
+    border: solid 5px red;
+    border-radius: 10px;
+    font-size: 50px;
+    margin: 0px 100px 20px 100px;
+}
+
+.containerTitulos .titulos .imagemTitulos {
+    border-radius: 10px;
+    border: solid 3px white;
+    width: 900px;
+}
+
+.containerTitulos .titulos h1 {
+    font-size: 50px;
+}
