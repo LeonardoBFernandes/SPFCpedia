@@ -134,10 +134,11 @@ body {
 }
 
 /* ELENCO */
-.container .enunciado {
+.enunciado {
     background-color: black;
     color: white;
     font-size: 30px;
+    text-align: center;
 }
 
 .container .posicao {
@@ -538,4 +539,152 @@ body {
 
 .text-bold {
     font-weight: bold;
+}
+
+/* ÍDOLOS */
+.container .idolo {
+    background-color: red;
+    border: solid 5px white;
+    border-radius: 10px;
+    margin: 0px 50px 0px 50px;
+    color: white;
+    margin-bottom: 25px;
+}
+
+.container .idolo .nomeIdolo {
+    font-size: 40px;
+}
+
+.container .idolo .content {
+    display: flex;
+    justify-content: space-around;
+}
+
+#img_ceni {
+    height: 730px;
+    margin-bottom: 30px;
+}
+
+.container .idolo .content .div_texto {
+    background-color: black;
+    border: solid 5px white;
+    border-radius: 10px;
+    width: 50%;
+    height: fit-content;
+    padding: 10px;
+}
+
+.container .idolo2 {
+    background-color: white;
+    border: solid 5px red;
+    border-radius: 10px;
+    margin: 0px 50px 0px 50px;
+    margin-bottom: 25px;
+}
+
+.container .idolo2 .nomeIdolo2 {
+    font-size: 40px;
+}
+
+.container .idolo2 .content {
+    display: flex;
+    justify-content: space-around;
+}
+
+#img_careca {
+    height: 330px;
+    margin-bottom: 30px;
+}
+
+.container .idolo2 .content .div_texto2 {
+    background-color: red;
+    border: solid 5px black;
+    color: white;
+    border-radius: 10px;
+    width: 50%;
+    height: fit-content;
+    padding: 10px;
+}
+
+.container .idolo3 {
+    background-color: black;
+    border: solid 5px red;
+    color: white;
+    border-radius: 10px;
+    margin: 0px 50px 0px 50px;
+    margin-bottom: 25px;
+}
+
+.container .idolo3 .nomeIdolo3 {
+    font-size: 40px;
+}
+
+.container .idolo3 .content {
+    display: flex;
+    justify-content: space-around;
+}
+
+#img_rai {
+    height: 410px;
+    margin-bottom: 30px;
+}
+
+.container .idolo3 .content .div_texto3 {
+    background-color: white;
+    border: solid 5px red;
+    color: black;
+    border-radius: 10px;
+    width: 50%;
+    height: fit-content;
+    padding: 10px;
+}
+
+#img_canhoteiro {
+    height: 290px;
+    margin-bottom: 30px;
+}
+
+#img_kaka {
+    height: 310px;
+    margin-bottom: 30px;
+}
+
+#img_chulapa {
+    height: 310px;
+    margin-bottom: 30px;
+}
+
+#img_muller {
+    height: 460px;
+    margin-bottom: 30px;
+}
+
+#img_pedro {
+    height: 300px;
+    margin-bottom: 30px;
+}
+
+#img_tele {
+    height: 540px;
+    margin-bottom: 30px;
+}
+
+#img_oscar {
+    height: 340px;
+    margin-bottom: 30px;
+}
+
+#img_hernanes {
+    height: 340px;
+    margin-bottom: 30px;
+}
+
+#img_lugano {
+    height: 460px;
+    margin-bottom: 30px;
+}
+
+#img_muricy {
+    height: 650px;
+    margin-bottom: 30px;
 }
