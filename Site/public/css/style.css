@@ -194,6 +194,13 @@ body {
     height: 160px;
 }
 
+.container .proxJogos {
+    width: 900px;
+    height: 500px;
+    border-radius: 10px;
+    border: solid 3px white;
+}
+
 /* LOGIN E CADASTRO */
 .container .card {
     display: flex;
