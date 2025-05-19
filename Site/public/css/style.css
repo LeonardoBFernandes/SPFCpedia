@@ -740,3 +740,15 @@ body {
 .containerTitulos .titulos h1 {
     font-size: 50px;
 }
+
+/* HISTÓRIA */
+.containerHistoria {
+    margin-top: 100px;
+    text-align: center;
+    background-image: url('../assets/imgs/historiaFundo.png');
+    background-repeat: no-repeat;
+    /* --> Imagem de fundo não se repete */
+    background-attachment: fixed;
+    /* --> Imagem de fundo fica fixa */
+    padding-bottom: 20px;
+}
