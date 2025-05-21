@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPFCpedia - Dashboard</title>
+    <script src="./js/sessao.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="./assets/imgs/Escudo_SPFC.ico" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body onload="obterDadosGrafico()">
+    <div class="header">
+        <div class="escudo_nome">
+            <a href="indexComLogin.html">
+                <img src="assets/imgs/Escudo_SPFC.png" alt="Escudo do SPFC">
+                <h2>SPFCpedia</h2>
+            </a>
+        </div>
+        <ul class="nav_links">
+            <li>
+                <a href="indexComLogin.html">Home</a>
+            </li>
+            <li>
+                <a href="historia.html">História</a>
+            </li>
+            <li>
+                <a href="titulos.html">Títulos</a>
+            </li>
+            <li>
+                <a href="idolos.html">Ídolos</a>
+            </li>
+            <li>
+                <a href="elenco.html">Elenco</a>
+            </li>
+            <li>
+                <a href="quiz.html">Quiz</a>
+            </li>
+            <li>
+                <a href="dashboard.html" class="selecionado">Dashboard</a>
+            </li>
+            <div class="hello">
+                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+            </div>
+            <button onclick="limparSessao()">Sair</button>
+        </ul>
+    </div>
+    <div class="container">
+        <div class="grafico">
+            <h1>Planos de sócio-torcedor dos usuários do site</h1>
+            <canvas id="myChartCanvas1"></canvas>
+        </div>
+        <div class="grafico">
+            <h1>Distribuição dos usuários do site por estado do Brasil</h1>
+            <canvas id="myChartCanvas2"></canvas>
+        </div>
+        <div class="grafico">
+            <h1>Porcentagem de acerto dos usuários do site no quiz</h1>
+            <canvas id="myChartCanvas3"></canvas>
+        </div>
+        <div class="grafico">
+            <h1>Jogadores preferidos dos usuários do site</h1>
+            <canvas id="myChartCanvas4"></canvas>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="creditos">
+            <h4>Feito por:</h4>
+            <p>Leonardo Borges Fernandes</p>
+            <h4>Email:</h4>
+            <p>leonardo.fernandes@sptech.school</p>
+        </div>
+        <div class="logo">
+            <img src="assets/imgs/Escudo_SPFC.png" alt="">
+            <h1>São Paulo Futebol Clube</h1>
+        </div>
+        <div class="redes-sociais">
+            <h4>Redes sociais do SPFC:</h4>
+            <ul>
+                <li><a href="https://www.instagram.com/saopaulofc/" target="_blank"><img src="assets/imgs/instagram.png"
+                            alt=""></a></li>
+                <li><a href="https://youtube.com/@saopaulofc?si=m9PlbScdJMwnmjd2" target="_blank"><img
+                            src="assets/imgs/youtube.png" alt=""></a></li>
+                <li><a href="https://x.com/SaoPauloFC" target="_blank"><img src="assets/imgs/X.png" alt=""></a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+<script>
+    // O gráfico é construído com três funções:
+    // 1. obterDadosGrafico -> Traz dados do Banco de Dados para montar o gráfico da primeira vez
+    // 2. plotarGrafico -> Monta o gráfico com os dados trazidos e exibe em tela
+    // 3. atualizarGrafico -> Atualiza o gráfico, trazendo novamente dados do Banco
+
+    // Esta função *obterDadosGrafico* busca os últimos dados inseridos em tabela de medidas.
+    // para, quando carregar o gráfico da primeira vez, já trazer com vários dados.
+    // A função *obterDadosGrafico* também invoca a função *plotarGrafico*
+
+    //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
+    //     Para ajustar o "select", ajuste o comando sql em src/models
+    function obterDadosGrafico(idGrafico) {
+        for (idGrafico = 1; idGrafico <= 4; idGrafico++) {
+            console.log(idGrafico);
+            fetch(`/medidas/ultimas/${idGrafico}`, { cache: 'no-store' }).then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (resposta) {
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                        resposta.reverse();
+
+                        plotarGrafico(resposta, idGrafico);
+
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+                .catch(function (error) {
+                    console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+                });
+        }
+    }
+
+    // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
+    // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
+    // A função *plotarGrafico* também invoca a função *atualizarGrafico*
+    function plotarGrafico(resposta, idGrafico) {
+
+        console.log('iniciando plotagem do gráfico...');
+
+        // Criando estrutura para plotar gráfico - labels
+        let labels = [];
+
+        // Criando estrutura para plotar gráfico - dados
+        let titulo = 'Quantidade';
+        if (idGrafico == 1) {
+            titulo = 'Quantidade';
+        } else if (idGrafico == 2) {
+            titulo = 'Quantidade';
+        } else if (idGrafico == 3) {
+            titulo = 'Porcentagem de acerto dos usuários do site no quiz';
+        } else if (idGrafico == 4) {
+            titulo = 'Jogadores preferidos dos usuários do site';
+        }
+
+        let dados = {
+            labels: labels,
+            datasets: [{
+                label: `${titulo}`,
+                data: [],
+                backgroundColor: 'rgb(255, 255, 255)',
+                barThickness: 110,
+                borderColor: 'rgb(0, 0, 0)',
+                borderWidth: 4
+            }]
+        };
+
+        console.log('----------------------------------------------')
+        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+        console.log(resposta)
+
+        // Inserindo valores recebidos em estrutura para plotar o gráfico
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+            labels.push(registro.plano);
+            dados.datasets[0].data.push(registro.contagem);
+        }
+
+        console.log('----------------------------------------------')
+        console.log('O gráfico será plotado com os respectivos valores:')
+        console.log('Labels:')
+        console.log(labels)
+        console.log('Dados:')
+        console.log(dados.datasets)
+        console.log('----------------------------------------------')
+
+        // Criando estrutura para plotar gráfico - config
+        let tipoGrafico = 'bar';
+        if (idGrafico == 1) {
+            tipoGrafico = 'pie';
+        } else if (idGrafico == 2) {
+            tipoGrafico = 'pie';
+        } else if (idGrafico == 3) {
+            tipoGrafico = 'doughnut';
+        } else if (idGrafico == 4) {
+            tipoGrafico = 'bar';
+        }
+
+        const config = {
+            type: tipoGrafico,
+            data: dados,
+        };
+
+        Chart.defaults.color = '#000';
+        // Adicionando gráfico criado em div na tela
+        let myChart = new Chart(
+            document.getElementById(`myChartCanvas${idGrafico}`),
+            config
+        );
+
+        // setTimeout(() => atualizarGrafico(idGrafico, dados, myChart), 2000);
+    }
+
+
+    // Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
+    // buscando a última medida inserida em tabela contendo as capturas, 
+
+    //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
+    //     Para ajustar o "select", ajuste o comando sql em src/models
+    function atualizarGrafico(idAquario, dados, myChart) {
+
+
+
+        fetch(`/medidas/tempo-real/${idAquario}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (novoRegistro) {
+
+                    obterdados(idAquario);
+                    // alertar(novoRegistro, idAquario);
+                    console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                    console.log(`Dados atuais do gráfico:`);
+                    console.log(dados);
+
+                    let avisoCaptura = document.getElementById(`avisoCaptura${idAquario}`)
+                    avisoCaptura.innerHTML = ""
+
+
+                    if (novoRegistro[0].momento_grafico == dados.labels[dados.labels.length - 1]) {
+                        console.log("---------------------------------------------------------------")
+                        console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+                        avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
+                        console.log("Horário do novo dado capturado:")
+                        console.log(novoRegistro[0].momento_grafico)
+                        console.log("Horário do último dado capturado:")
+                        console.log(dados.labels[dados.labels.length - 1])
+                        console.log("---------------------------------------------------------------")
+                    } else {
+                        // tirando e colocando valores no gráfico
+                        dados.labels.shift(); // apagar o primeiro
+                        dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
+
+                        dados.datasets[0].data.shift();  // apagar o primeiro de umidade
+                        dados.datasets[0].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
+
+                        dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
+                        dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
+
+                        myChart.update();
+                    }
+
+                    // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
+    }
+</script>
+
+</html>

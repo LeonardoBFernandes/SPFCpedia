@@ -46,7 +46,7 @@ body {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 800px;
+    width: 900px;
 }
 
 .header button {
@@ -766,4 +766,17 @@ body {
     border-radius: 10px;
     border: solid 3px white;
     width: 900px;
+}
+
+/* DASHBOARD */
+.container .grafico {
+    background-color: red;
+    width: 900px;
+    border: solid 5px white;
+    border-radius: 10px;
+    color: black;
+}
+
+.container .grafico h1 {
+    color: white;
 }
