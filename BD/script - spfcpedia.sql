@@ -149,26 +149,34 @@ insert into usuario (nome, sobrenome, dtNascimento, fk_idPlanoST, cidade, fk_idE
 ('Diego', 'Araújo', '1991-12-12', 4, 'Belém', 14, 'diego.araujo@example.com', 'senha003', 18),
 ('Tatiane', 'Cardoso', '1993-05-05', 5, 'Campo Grande', 12, 'tatiane.cardoso@example.com', 'senha004', 19),
 ('Gustavo', 'Fernandes', '2001-08-08', 6, 'São Luís', 10, 'gustavo.fernandes@example.com', 'senha005', 20),
-('Patrícia', 'Monteiro', '1994-09-09', 2, 'Aracaju', 26, 'patricia.monteiro@example.com', 'senha006', 21);
+('Patrícia', 'Monteiro', '1994-09-09', 2, 'Aracaju', 26, 'patricia.monteiro@example.com', 'senha006', 21),
+('Thiago', 'Bonacelli', '1982-04-23', 6, 'São Paulo', 25, 'thiago@sptech.school', 'thiago123', 25);
 
-insert into tentativaQuiz (fk_idusuario, pontuacao) values
-(1, 12),
-(2, 9),
-(3, 14),
-(4, 8),
-(5, 13),
-(6, 10),
-(7, 7),
-(8, 11),
-(9, 15),
-(10, 6),
-(11, 13),
-(12, 8),
-(13, 14),
-(14, 9),
-(15, 10),
-(16, 11),
-(17, 12),
-(18, 6),
-(19, 7),
-(20, 13);
+insert into tentativaQuiz (fk_idusuario, pontuacao, porcentagemAcertos) values
+(1, 12, 0.80),
+(2, 9, 0.60),
+(3, 14, 0.93),
+(4, 8, 0.53),
+(5, 13, 0.87),
+(6, 10, 0.67),
+(7, 7, 0.47),
+(8, 11, 0.73),
+(9, 15, 1.00),
+(10, 6, 0.40),
+(11, 13, 0.87),
+(12, 8, 0.53),
+(13, 14, 0.93),
+(14, 9, 0.60),
+(15, 10, 0.67),
+(16, 11, 0.73),
+(17, 12, 0.80),
+(18, 6, 0.40),
+(19, 7, 0.47),
+(20, 13, 0.87);
+
+
+-- Mudanças para fazer no banco oficial:
+alter table tentativaQuiz add column porcentagemAcertos decimal(5,2);
+alter table tentativaQuiz add constraint chk_porcentagem check (porcentagemAcertos between 0 and 1);
+-- Inserir novamente os dados fictícios na tabela de tentativas
+-- Inserir cadastro do Thiago
