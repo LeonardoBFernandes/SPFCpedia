@@ -771,12 +771,24 @@ body {
 /* DASHBOARD */
 .container .grafico {
     background-color: red;
-    width: 900px;
+    width: 650px;
+    padding: 20px;
     border: solid 5px white;
     border-radius: 10px;
-    color: black;
+    color: white;
 }
 
-.container .grafico h1 {
+.container .linhaGrafico {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+.container .graficoUnico {
+    background-color: red;
+    width: 950px;
+    padding: 20px;
+    border: solid 5px white;
+    border-radius: 10px;
     color: white;
 }

@@ -49,21 +49,34 @@
         </ul>
     </div>
     <div class="container">
-        <div class="grafico">
-            <h1>Planos de sócio-torcedor dos usuários do site</h1>
-            <canvas id="myChartCanvas1"></canvas>
+        <div class="enunciado">
+            <h1>Dashboard</h1>
         </div>
-        <div class="grafico">
-            <h1>Distribuição dos usuários do site por estado do Brasil</h1>
-            <canvas id="myChartCanvas2"></canvas>
+        <div class="linhaGrafico">
+            <div class="grafico">
+                <h1>Planos de sócio-torcedor dos usuários do site</h1>
+                <canvas id="myChartCanvas1"></canvas>
+            </div>
+            <div class="grafico">
+                <h1>Distribuição dos usuários do site por estado do Brasil</h1>
+                <canvas id="myChartCanvas2"></canvas>
+            </div>
         </div>
-        <div class="grafico">
-            <h1>Porcentagem de acerto dos usuários do site no quiz</h1>
-            <canvas id="myChartCanvas3"></canvas>
+        <div class="linhaGrafico">
+            <div class="grafico">
+                <h1>Porcentagem de acerto dos usuários do site no quiz</h1>
+                <canvas id="myChartCanvas3"></canvas>
+            </div>
+            <div class="grafico">
+                <h1>Porcentagem de acerto dos usuários do site no quiz</h1>
+                <canvas id="myChartCanvas4"></canvas>
+            </div>
         </div>
-        <div class="grafico">
-            <h1>Jogadores preferidos dos usuários do site</h1>
-            <canvas id="myChartCanvas4"></canvas>
+        <div class="linhaGrafico">
+            <div class="graficoUnico">
+                <h1>Jogadores preferidos dos usuários do site <br> (5 jogadores mais escolhidos)</h1>
+                <canvas id="myChartCanvas5"></canvas>
+            </div>
         </div>
     </div>
     <div class="footer">
@@ -101,8 +114,8 @@
 
     //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
     //     Para ajustar o "select", ajuste o comando sql em src/models
-    function obterDadosGrafico(idGrafico) {
-        for (idGrafico = 1; idGrafico <= 4; idGrafico++) {
+    function obterDadosGrafico() {
+        for (let idGrafico = 1; idGrafico <= 5; idGrafico++) {
             console.log(idGrafico);
             fetch(`/medidas/ultimas/${idGrafico}`, { cache: 'no-store' }).then(function (response) {
                 if (response.ok) {
@@ -134,23 +147,33 @@
         let labels = [];
 
         // Criando estrutura para plotar gráfico - dados
-        let titulo = 'Quantidade';
+        let legenda = 'Quantidade';
+        let coresGraficoDiffBarra = ['rgb(255, 204, 0)',
+                    'rgb(0, 153, 255)',
+                    'rgb(0, 204, 102)',
+                    'rgb(255, 102, 153)',
+                    'rgb(0, 204, 204)',
+                    'rgb(255, 153, 51)'];
+        let coresGraficoBarra = ['rgb(255, 255, 255)'];
+        let coresGrafico = [];
         if (idGrafico == 1) {
-            titulo = 'Quantidade';
+            coresGrafico = coresGraficoDiffBarra;
         } else if (idGrafico == 2) {
-            titulo = 'Quantidade';
+            coresGrafico = coresGraficoDiffBarra;
         } else if (idGrafico == 3) {
-            titulo = 'Porcentagem de acerto dos usuários do site no quiz';
+            coresGrafico = coresGraficoDiffBarra;
         } else if (idGrafico == 4) {
-            titulo = 'Jogadores preferidos dos usuários do site';
+            coresGrafico = coresGraficoDiffBarra;
+        } else if (idGrafico == 5) {
+            coresGrafico = coresGraficoBarra;
         }
 
         let dados = {
             labels: labels,
             datasets: [{
-                label: `${titulo}`,
+                label: legenda,
                 data: [],
-                backgroundColor: 'rgb(255, 255, 255)',
+                backgroundColor: coresGrafico,
                 barThickness: 110,
                 borderColor: 'rgb(0, 0, 0)',
                 borderWidth: 4
@@ -162,10 +185,36 @@
         console.log(resposta)
 
         // Inserindo valores recebidos em estrutura para plotar o gráfico
-        for (i = 0; i < resposta.length; i++) {
-            var registro = resposta[i];
-            labels.push(registro.plano);
-            dados.datasets[0].data.push(registro.contagem);
+        if (idGrafico == 1) {
+            for (i = 0; i < resposta.length; i++) {
+                var registro = resposta[i];
+                labels.push(registro.plano);
+                dados.datasets[0].data.push(registro.contagem);
+            }
+        } else if (idGrafico == 2) {
+            for (i = 0; i < resposta.length; i++) {
+                var registro = resposta[i];
+                labels.push(registro.regiao);
+                dados.datasets[0].data.push(registro.contagem);
+            }
+        } else if (idGrafico == 3) {
+            for (i = 0; i < resposta.length; i++) {
+                var registro = resposta[i];
+                labels.push(registro.desempenho);
+                dados.datasets[0].data.push(registro.contagem);
+            }
+        } else if (idGrafico == 4) {
+            for (i = 0; i < resposta.length; i++) {
+                var registro = resposta[i];
+                labels.push(registro.faixa_idade);
+                dados.datasets[0].data.push(registro.contagem);
+            }
+        } else if (idGrafico == 5) {
+            for (i = 0; i < resposta.length; i++) {
+                var registro = resposta[i];
+                labels.push(registro.apelido);
+                dados.datasets[0].data.push(registro.contagem);
+            }
         }
 
         console.log('----------------------------------------------')
@@ -185,6 +234,8 @@
         } else if (idGrafico == 3) {
             tipoGrafico = 'doughnut';
         } else if (idGrafico == 4) {
+            tipoGrafico = 'doughnut';
+        } else if (idGrafico == 5) {
             tipoGrafico = 'bar';
         }
 
