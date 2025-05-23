@@ -7,7 +7,7 @@ router.get("/ultimas/:idGrafico", function (req, res) {
     medidaController.buscarUltimasMedidas(req, res);
 });
 
-router.get("/tempo-real/:idGrafico", function (req, res) {
+router.get("/tempo-real/:idIndicador", function (req, res) {
     medidaController.buscarMedidasEmTempoReal(req, res);
 })
 

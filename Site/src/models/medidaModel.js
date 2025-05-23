@@ -25,15 +25,14 @@ function buscarUltimasMedidas(idGrafico, limite_linhas) {
         FROM 
         (SELECT 
         CASE 
-            WHEN pontuacao = 15 THEN '100%'
-            WHEN pontuacao >= 11.25 THEN 'Entre 75% e 99%'
-            WHEN pontuacao >= 7.5 THEN 'Entre 50% e 74%'
-            WHEN pontuacao >= 3.75 THEN 'Entre 25% e 49%'
+            WHEN porcentagemAcertos = 1 THEN '100%'
+            WHEN porcentagemAcertos >= 0.75 THEN 'Entre 75% e 99%'
+            WHEN porcentagemAcertos >= 0.5 THEN 'Entre 50% e 74%'
+            WHEN porcentagemAcertos >= 0.25 THEN 'Entre 25% e 49%'
             ELSE 'Abaixo de 25%'
         END AS desempenho
     FROM tentativaQuiz) as classificacao
     GROUP BY desempenho;`;
-
         console.log("Executando a instrução SQL: \n" + instrucaoSql);
         return database.executar(instrucaoSql);
     }
@@ -66,18 +65,26 @@ function buscarUltimasMedidas(idGrafico, limite_linhas) {
     }
 }
 
-function buscarMedidasEmTempoReal(idAquario) {
+function buscarMedidasEmTempoReal(idIndicador) {
+    if (idIndicador == 1) {
+        var instrucaoSql = `SELECT `
+    }
 
-    var instrucaoSql = `SELECT 
-        dht11_temperatura as temperatura, 
-        dht11_umidade as umidade,
-                        DATE_FORMAT(momento,'%H:%i:%s') as momento_grafico, 
-                        fk_aquario 
-                        FROM medida WHERE fk_aquario = ${idAquario} 
-                    ORDER BY id DESC LIMIT 1`;
+    if (idIndicador == 2) {
+        
+    }
 
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
+    if (idIndicador == 3) {
+        
+    }
+
+    if (idIndicador == 4) {
+        
+    }
+
+    if (idIndicador == 5) {
+        
+    }
 }
 
 module.exports = {

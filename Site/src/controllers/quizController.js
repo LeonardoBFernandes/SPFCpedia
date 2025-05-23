@@ -28,12 +28,13 @@ function listar(req, res) {
 function cadastrar(req, res) {
     var pontuacao = req.body.pontuacao;
     var id = req.body.id;
+    var porcentagem = req.body.porcentagem;
 
     if (pontuacao == undefined) {
         res.status(400).send("Sua pontuação está undefined!");
     }
 
-    quizModel.cadastrar(id, pontuacao).then(function(resposta){
+    quizModel.cadastrar(id, pontuacao, porcentagem).then(function(resposta){
         res.status(200).send("Pontuação salva com sucesso");
     }).catch(function(erro){
         res.status(500).json(erro.sqlMessage);

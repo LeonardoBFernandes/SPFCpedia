@@ -771,7 +771,7 @@ body {
 /* DASHBOARD */
 .container .grafico {
     background-color: red;
-    width: 650px;
+    width: 550px;
     padding: 20px;
     border: solid 5px white;
     border-radius: 10px;

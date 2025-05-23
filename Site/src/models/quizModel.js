@@ -8,9 +8,9 @@ function listar(id) {
     return database.executar(instrucao);
 }
 
-function cadastrar(id, pontuacao) {
+function cadastrar(id, pontuacao, porcentagem) {
     var instrucao = `
-        INSERT INTO tentativaQuiz (fk_idusuario, pontuacao) VALUES ('${id}', ${pontuacao});
+        INSERT INTO tentativaQuiz (fk_idusuario, pontuacao, porcentagemAcertos) VALUES ('${id}', ${pontuacao}, '${porcentagem}');
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
