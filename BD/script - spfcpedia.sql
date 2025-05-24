@@ -174,9 +174,34 @@ insert into tentativaQuiz (fk_idusuario, pontuacao, porcentagemAcertos) values
 (19, 7, 0.47),
 (20, 13, 0.87);
 
+-- Criando view para visualização dos planos preferidos dos usuários
+create or replace view view_planoST
+as 
+select pst.nome as plano, count(*) as contagem from usuario usu
+inner join planoST pst on pst.idPlanoST = usu.fk_idPlanoST
+group by plano;
 
--- Mudanças para fazer no banco oficial:
-alter table tentativaQuiz add column porcentagemAcertos decimal(5,2);
-alter table tentativaQuiz add constraint chk_porcentagem check (porcentagemAcertos between 0 and 1);
--- Inserir novamente os dados fictícios na tabela de tentativas
--- Inserir cadastro do Thiago
+create or replace view view_estado
+as
+select est.nome as estado, count(*) as contagem from usuario usu
+inner join estado est on est.idEstado = usu.fk_idEstado
+group by estado;
+
+create or replace view view_faixaIdade
+as
+SELECT faixa_idade, count(*) as contagem
+        FROM (SELECT CASE
+        WHEN TIMESTAMPDIFF(YEAR, dtNascimento, current_date()) > 60 THEN 'Acima de 60 anos'
+        WHEN TIMESTAMPDIFF(YEAR, dtNascimento, current_date()) BETWEEN 41 AND 60 THEN 'Entre 41 e 60 anos'
+        WHEN TIMESTAMPDIFF(YEAR, dtNascimento, current_date()) BETWEEN 21 AND 40 THEN 'Entre 21 e 40 anos'
+        ELSE 'Abaixo de 20 anos'
+        END AS faixa_idade
+        FROM usuario
+        ) as a
+        GROUP BY faixa_idade;
+        
+create or replace view view_jogador
+as
+select jog.apelido as jogador, count(*) as contagem from usuario usu
+inner join jogador jog on jog.idJogador = usu.fk_jogadorFavorito
+group by jogador;
