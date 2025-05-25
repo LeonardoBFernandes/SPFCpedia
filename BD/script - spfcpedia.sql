@@ -150,29 +150,30 @@ insert into usuario (nome, sobrenome, dtNascimento, fk_idPlanoST, cidade, fk_idE
 ('Tatiane', 'Cardoso', '1993-05-05', 5, 'Campo Grande', 12, 'tatiane.cardoso@example.com', 'senha004', 19),
 ('Gustavo', 'Fernandes', '2001-08-08', 6, 'São Luís', 10, 'gustavo.fernandes@example.com', 'senha005', 20),
 ('Patrícia', 'Monteiro', '1994-09-09', 2, 'Aracaju', 26, 'patricia.monteiro@example.com', 'senha006', 21),
+        -- insert do prof Thiago de Socio
 ('Thiago', 'Bonacelli', '1982-04-23', 6, 'São Paulo', 25, 'thiago@sptech.school', 'thiago123', 25);
 
 insert into tentativaQuiz (fk_idusuario, pontuacao, porcentagemAcertos) values
-(1, 12, 0.80),
-(2, 9, 0.60),
-(3, 14, 0.93),
-(4, 8, 0.53),
-(5, 13, 0.87),
-(6, 10, 0.67),
-(7, 7, 0.47),
-(8, 11, 0.73),
-(9, 15, 1.00),
-(10, 6, 0.40),
+(7, 12, 0.80),
+(8, 9, 0.60),
+(9, 14, 0.93),
+(10, 8, 0.53),
 (11, 13, 0.87),
-(12, 8, 0.53),
-(13, 14, 0.93),
-(14, 9, 0.60),
-(15, 10, 0.67),
-(16, 11, 0.73),
-(17, 12, 0.80),
-(18, 6, 0.40),
-(19, 7, 0.47),
-(20, 13, 0.87);
+(12, 10, 0.67),
+(13, 7, 0.47),
+(14, 11, 0.73),
+(15, 15, 1.00),
+(16, 6, 0.40),
+(17, 13, 0.87),
+(18, 8, 0.53),
+(19, 14, 0.93),
+(20, 9, 0.60),
+(21, 10, 0.67),
+(22, 11, 0.73),
+(23, 12, 0.80),
+(24, 6, 0.40),
+(25, 7, 0.47),
+(26, 13, 0.87);
 
 -- Criando view para visualização dos planos preferidos dos usuários
 create or replace view view_planoST
