@@ -792,3 +792,19 @@ body {
     border-radius: 10px;
     color: white;
 }
+
+.container .indicador {
+    background-color: black;
+    color: white;
+    border: solid 5px red;
+    border-radius: 10px;
+    width: 400px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.container .div_indicadores {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}

@@ -38,16 +38,8 @@ function buscarUltimasMedidas(idGrafico, limite_linhas) {
     }
 
     if (idGrafico == 4) {
-        var instrucaoSql = `SELECT faixa_idade, count(*) as contagem
-        FROM (SELECT CASE
-        WHEN TIMESTAMPDIFF(YEAR, dtNascimento, current_date()) > 60 THEN 'Acima de 60 anos'
-        WHEN TIMESTAMPDIFF(YEAR, dtNascimento, current_date()) BETWEEN 41 AND 60 THEN 'Entre 41 e 60 anos'
-        WHEN TIMESTAMPDIFF(YEAR, dtNascimento, current_date()) BETWEEN 21 AND 40 THEN 'Entre 21 e 40 anos'
-        ELSE 'Abaixo de 20 anos'
-        END AS faixa_idade
-        FROM usuario
-        ) as a
-        GROUP BY faixa_idade`;
+        var instrucaoSql = `SELECT *
+        FROM view_faixaIdade`;
 
         console.log("Executando a instrução SQL: \n" + instrucaoSql);
         return database.executar(instrucaoSql);
@@ -67,23 +59,56 @@ function buscarUltimasMedidas(idGrafico, limite_linhas) {
 
 function buscarMedidasEmTempoReal(idIndicador) {
     if (idIndicador == 1) {
-        var instrucaoSql = `SELECT `
+        var instrucaoSql = `SELECT plano
+        FROM view_planoST
+        WHERE contagem = (SELECT MAX(contagem) FROM view_planoST)`;
+
+        console.log("Executando a instrução SQL: \n" + instrucaoSql);
+        return database.executar(instrucaoSql);
     }
 
     if (idIndicador == 2) {
-        
+        var instrucaoSql = `SELECT estado
+        FROM view_estado
+        WHERE contagem = (SELECT MAX(contagem) FROM view_estado)`;
+
+        console.log("Executando a instrução SQL: \n" + instrucaoSql);
+        return database.executar(instrucaoSql);
     }
 
     if (idIndicador == 3) {
-        
+        var instrucaoSql = `SELECT ROUND(AVG(pontuacao), 0) as media
+        FROM tentativaQuiz`;
+
+        console.log("Executando a instrução SQL: \n" + instrucaoSql);
+        return database.executar(instrucaoSql);
     }
 
     if (idIndicador == 4) {
-        
+        var instrucaoSql = `SELECT faixa_idade
+        FROM view_faixaIdade
+        WHERE contagem = (SELECT MAX(contagem) FROM view_faixaIdade)`;
+
+        console.log("Executando a instrução SQL: \n" + instrucaoSql);
+        return database.executar(instrucaoSql);
     }
 
     if (idIndicador == 5) {
-        
+        var instrucaoSql = `SELECT jogador
+        FROM view_jogador
+        WHERE contagem = (SELECT MAX(contagem) FROM view_jogador)`;
+
+        console.log("Executando a instrução SQL: \n" + instrucaoSql);
+        return database.executar(instrucaoSql);
+    }
+
+    if (idIndicador == 6) {
+        var instrucaoSql = `SELECT regiao
+        FROM view_regiao
+        WHERE contagem = (SELECT MAX(contagem) FROM view_regiao)`;
+
+        console.log("Executando a instrução SQL: \n" + instrucaoSql);
+        return database.executar(instrucaoSql);
     }
 }
 

@@ -12,7 +12,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-<body onload="obterDadosGrafico()">
+<body onload="obterDadosGrafico(), obterDadosIndicador()">
     <div class="header">
         <div class="escudo_nome">
             <a href="indexComLogin.html">
@@ -52,9 +52,31 @@
         <div class="enunciado">
             <h1>Dashboard</h1>
         </div>
-        <div id="indicador1">
-            <h1>Plano de sócio-torcedor preferido dos usários do site</h1>
-            <h2 id="resultadoQuery1"></h2>
+        <div class="div_indicadores">
+            <div class="indicador" id="indicador1">
+                <h4>Plano de sócio-torcedor preferido dos usários do site:</h4>
+                <h1 id="resultadoQuery1"></h1>
+            </div>
+            <div class="indicador" id="indicador2">
+                <h4>Estado com maior número de usuários do site:</h4>
+                <h1 id="resultadoQuery2"></h1>
+            </div>
+            <div class="indicador" id="indicador3">
+                <h4>Média de pontuação dos usuários no quiz:</h4>
+                <h1 id="resultadoQuery3"></h1>
+            </div>
+            <div class="indicador" id="indicador4">
+                <h4>Faixa de idade com maior número de usuários:</h4>
+                <h1 id="resultadoQuery4"></h1>
+            </div>
+            <div class="indicador" id="indicador5">
+                <h4>Jogador favorito dos usários do site:</h4>
+                <h1 id="resultadoQuery5"></h1>
+            </div>
+            <div class="indicador" id="indicador6">
+                <h4>Região com maior número de usuários do site:</h4>
+                <h1 id="resultadoQuery6"></h1>
+            </div>
         </div>
         <div class="linhaGrafico">
             <div class="grafico">
@@ -62,7 +84,7 @@
                 <canvas id="myChartCanvas1"></canvas>
             </div>
             <div class="grafico">
-                <h1>Distribuição dos usuários do site por estado do Brasil</h1>
+                <h1>Distribuição dos usuários do site por região do Brasil</h1>
                 <canvas id="myChartCanvas2"></canvas>
             </div>
         </div>
@@ -258,7 +280,7 @@
     }
 
     function obterDadosIndicador() {
-        for (let idIndicador = 1; idIndicador <= 5; idIndicador++) {
+        for (let idIndicador = 1; idIndicador <= 6; idIndicador++) {
             console.log(idIndicador);
             fetch(`/medidas/tempo-real/${idIndicador}`, { cache: 'no-store' }).then(function (response) {
                 if (response.ok) {
@@ -280,11 +302,18 @@
     }
 
     function plotarIndicador(resposta, idIndicador) {
+
+        console.log('iniciando plotagem do indicador...');
+
+        console.log('----------------------------------------------');
+        console.log('Estes dados foram recebidos pela funcao "obterDadosIndicador" e passados para "plotarIndicador":');
+        console.log(resposta);
+
         let mensagem = [];
         if (idIndicador == 1) {
             for (i = 0; i < resposta.length; i++) {
                 var registro = resposta[i];
-                mensagem.push(registro.planoST);
+                mensagem.push(registro.plano);
             }
         } else if (idIndicador == 2) {
             for (i = 0; i < resposta.length; i++) {
@@ -306,7 +335,18 @@
                 var registro = resposta[i];
                 mensagem.push(registro.jogador);
             }
+        } else if (idIndicador == 6) {
+            for (i = 0; i < resposta.length; i++) {
+                var registro = resposta[i];
+                mensagem.push(registro.regiao);
+            }
         }
+
+        console.log('----------------------------------------------')
+        console.log('O indicador será plotado com os respectivos valores:')
+        console.log('Valores:')
+        console.log(mensagem)
+        console.log('----------------------------------------------')
 
         let div = document.getElementById(`resultadoQuery${idIndicador}`);
         div.innerHTML = mensagem;

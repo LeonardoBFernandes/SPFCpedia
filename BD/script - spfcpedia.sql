@@ -206,3 +206,9 @@ as
 select jog.apelido as jogador, count(*) as contagem from usuario usu
 inner join jogador jog on jog.idJogador = usu.fk_jogadorFavorito
 group by jogador;
+
+create or replace view view_regiao
+as
+select est.regiao as regiao, count(*) as contagem from usuario usu
+inner join estado est on est.idEstado = usu.fk_idEstado
+group by regiao;
