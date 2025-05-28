@@ -85,9 +85,8 @@ function buscarMedidasEmTempoReal(idIndicador) {
     }
 
     if (idIndicador == 4) {
-        var instrucaoSql = `SELECT faixa_idade
-        FROM view_faixaIdade
-        WHERE contagem = (SELECT MAX(contagem) FROM view_faixaIdade)`;
+        var instrucaoSql = `SELECT round(avg(timestampdiff(year, dtNascimento, now())), 0) as media_idade
+        FROM usuario`;
 
         console.log("Executando a instrução SQL: \n" + instrucaoSql);
         return database.executar(instrucaoSql);

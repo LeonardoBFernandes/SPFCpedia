@@ -48,7 +48,7 @@
             <button onclick="limparSessao()">Sair</button>
         </ul>
     </div>
-    <div class="container">
+    <div class="containerDASH">
         <div class="enunciado">
             <h1>Dashboard</h1>
         </div>
@@ -66,7 +66,7 @@
                 <h1 id="resultadoQuery3"></h1>
             </div>
             <div class="indicador" id="indicador4">
-                <h4>Faixa de idade com maior número de usuários:</h4>
+                <h4>Média de idade dos usuários do site:</h4>
                 <h1 id="resultadoQuery4"></h1>
             </div>
             <div class="indicador" id="indicador5">
@@ -175,13 +175,13 @@
 
         // Criando estrutura para plotar gráfico - dados
         let legenda = 'Quantidade';
-        let coresGraficoDiffBarra = ['rgb(255, 204, 0)',
-            'rgb(0, 153, 255)',
-            'rgb(0, 204, 102)',
-            'rgb(255, 102, 153)',
-            'rgb(0, 204, 204)',
-            'rgb(255, 153, 51)'];
-        let coresGraficoBarra = ['rgb(255, 255, 255)'];
+        let coresGraficoDiffBarra = ['rgb(128, 0, 32)',
+            'rgb(204, 0, 0)',
+            'rgb(255, 102, 102)',
+            'rgb(51, 51, 51)',
+            'rgb(160, 160, 160)',
+            'rgb(240, 240, 240)'];
+        let coresGraficoBarra = ['rgb(204, 0, 0)'];
         let coresGrafico = [];
         if (idGrafico == 1) {
             coresGrafico = coresGraficoDiffBarra;
@@ -328,7 +328,7 @@
         } else if (idIndicador == 4) {
             for (i = 0; i < resposta.length; i++) {
                 var registro = resposta[i];
-                mensagem.push(registro.faixa_idade);
+                mensagem.push(registro.media_idade);
             }
         } else if (idIndicador == 5) {
             for (i = 0; i < resposta.length; i++) {
