@@ -305,7 +305,7 @@
                     // resposta.json().then(json => {
                     // });
                 }
-                if (sessionStorage.PONTUACAO == undefined) {
+                if (sessionStorage.PONTUACAO == undefined || sessionStorage.PONTUACAO == null) {
                     exibirPontuacao.innerHTML = `0`
                 } else {
                     exibirPontuacao.innerHTML = `${sessionStorage.PONTUACAO}`
