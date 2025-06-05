@@ -50,6 +50,7 @@ idTentativa int primary key auto_increment,
 fk_idusuario int not null,
 dataHoraTentativa datetime default current_timestamp(),
 pontuacao int not null,
+porcentagemAcertos decimal(3, 2) not null,
 constraint chk_pontuacao check (pontuacao between 0 and 15),
 constraint fk_usuario_tentativaQuiz foreign key (fk_idusuario) references usuario(idUsuario)
 );
@@ -150,9 +151,10 @@ insert into usuario (nome, sobrenome, dtNascimento, fk_idPlanoST, cidade, fk_idE
 ('Tatiane', 'Cardoso', '1993-05-05', 5, 'Campo Grande', 12, 'tatiane.cardoso@example.com', 'senha004', 19),
 ('Gustavo', 'Fernandes', '2001-08-08', 6, 'São Luís', 10, 'gustavo.fernandes@example.com', 'senha005', 20),
 ('Patrícia', 'Monteiro', '1994-09-09', 2, 'Aracaju', 26, 'patricia.monteiro@example.com', 'senha006', 21),
-        -- insert do prof Thiago de Socio
 ('Thiago', 'Bonacelli', '1982-04-23', 6, 'São Paulo', 25, 'thiago@sptech.school', 'thiago123', 25);
 
+-- Inserts do quiz dos novos usuários criados no insert acima
+-- (A fk_idusuario começa em 7 pois no banco oficial (da VM) já existem registros)
 insert into tentativaQuiz (fk_idusuario, pontuacao, porcentagemAcertos) values
 (7, 12, 0.80),
 (8, 9, 0.60),
