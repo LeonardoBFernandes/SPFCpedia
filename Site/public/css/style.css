@@ -299,6 +299,22 @@ body {
     font-size: 20px;
 }
 
+#respostaLogin {
+    margin-top: 10px;
+}
+
+#respostaLogin img {
+    width: 50px
+}
+
+#respostaCadastro {
+    margin-top: 10px;
+}
+
+#respostaCadastro img {
+    width: 50px
+}
+
 /* INDEX */
 .banner {
     margin-top: 100px;

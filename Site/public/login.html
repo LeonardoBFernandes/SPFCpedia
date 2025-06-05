@@ -57,6 +57,7 @@
                     <h1>Senha:</h1>
                     <input type="password" id="ipt_senha" placeholder="*********"><br>
                     <button onclick="entrar()">Entrar</button>
+                    <div id="respostaLogin"></div>
                     <p>Não possui uma conta? <a href="cadastro.html">Cadastre-se!</a></p>
                 </div>
             </div>
@@ -128,6 +129,9 @@
 
             if (resposta.ok) {
                 console.log(resposta);
+
+                respostaLogin.innerHTML = `Login realizado com sucesso!<br>Redirecionando para a Home...<br>
+                <img src="assets/circle-loading.gif" alt="Gif de Carregamento">`
 
                 resposta.json().then(json => {
                     console.log(json);

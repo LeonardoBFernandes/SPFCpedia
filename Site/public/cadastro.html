@@ -144,6 +144,7 @@
           <h1>Confirmar senha:</h1>
           <input type="password" id="ipt_confirmarSenha" placeholder="**********"><br>
           <button onclick="cadastrar()">Cadastrar</button>
+          <div id="respostaCadastro"></div>
         </div>
       </div>
     </div>
@@ -329,13 +330,11 @@
         console.log("resposta: ", resposta);
 
         if (resposta.ok) {
-          cardErro.style.display = "block";
-
-          mensagem_erro.innerHTML =
-            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+          respostaCadastro.innerHTML = `Cadastro realizado com sucesso!<br>Redirecionando para tela de Login......<br>
+                <img src="assets/circle-loading.gif" alt="Gif de Carregamento">`
 
           setTimeout(() => {
-            window.location = "login.html";
+            window.location.href = "login.html";
           }, "2000");
 
           limparFormulario();
