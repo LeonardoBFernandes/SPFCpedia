@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
 
-<body onload="onloadEsconder(); melhorTentativa()">
+<body onload="onloadEsconder()">
     <div class="header">
         <div class="escudo_nome">
             <a href="indexComLogin.html">
@@ -60,6 +60,7 @@
                 <div class="expQuiz2">
                     <h2>Sua pontuação máxima:</h2>
                     <p id="exibirPontuacao"></p>
+                    <button id="botaoAttPontuacaoQuiz" onclick="melhorTentativa()">Atualizar pontuação</button>
                 </div>
             </div>
         </div>
@@ -148,6 +149,12 @@
 
 <script>
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
+    if (sessionStorage.PONTUACAO_MAXIMA == undefined || sessionStorage.PONTUACAO_MAXIMA == 'null') {
+        exibirPontuacao.innerHTML = `0`
+    } else {
+        exibirPontuacao.innerHTML = `${sessionStorage.PONTUACAO_MAXIMA}`
+    }
 
     const listaDeQuestoes = [
 
@@ -300,15 +307,15 @@
                 if (resposta.ok) {
                     resposta.json().then(function (resposta) {
                         console.log(resposta);
-                        sessionStorage.PONTUACAO = resposta.pontuacao;
+                        sessionStorage.PONTUACAO_MAXIMA = resposta.pontuacao;
                     });
                     // resposta.json().then(json => {
                     // });
-                }
-                if (sessionStorage.PONTUACAO == undefined || sessionStorage.PONTUACAO == null) {
-                    exibirPontuacao.innerHTML = `0`
-                } else {
-                    exibirPontuacao.innerHTML = `${sessionStorage.PONTUACAO}`
+                    if (sessionStorage.PONTUACAO_MAXIMA == undefined || sessionStorage.PONTUACAO_MAXIMA == null) {
+                        exibirPontuacao.innerHTML = `0`
+                    } else {
+                        exibirPontuacao.innerHTML = `${sessionStorage.PONTUACAO_MAXIMA}`
+                    }
                 }
             })
             .catch(function (resposta) {
@@ -318,7 +325,6 @@
 
         return false;
     }
-
 
     function onloadEsconder() {
         document.getElementById('pontuacao').style.display = "none"

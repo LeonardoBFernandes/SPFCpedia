@@ -445,6 +445,7 @@ body {
     background-color: black;
     border-left: solid 5px white;
     display: flex;
+    align-items: center;
     flex-direction: column;
 }
 
@@ -539,6 +540,19 @@ body {
 
 .text-bold {
     font-weight: bold;
+}
+
+#botaoAttPontuacaoQuiz {
+    border-radius: 10px;
+    background-color: red;
+    border: solid 2px white;
+    color: white;
+    height: 50px;
+    width: 200px;
+    text-align: center;
+    font-family: "Pridi", serif;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 /* ÍDOLOS */
