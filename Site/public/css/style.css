@@ -583,6 +583,9 @@ body {
 
 .container .idolo .nomeIdolo {
     font-size: 40px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .container .idolo .content {
@@ -614,6 +617,9 @@ body {
 
 .container .idolo2 .nomeIdolo2 {
     font-size: 40px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .container .idolo2 .content {
@@ -647,6 +653,9 @@ body {
 
 .container .idolo3 .nomeIdolo3 {
     font-size: 40px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .container .idolo3 .content {
@@ -717,6 +726,32 @@ body {
 #img_muricy {
     height: 650px;
     margin-bottom: 30px;
+}
+
+.div_exibirPontuacao {
+    background-color: black;
+    color: white;
+    border: solid 5px white;
+    border-radius: 10px;
+    width: 450px;
+    height: fit-content;
+    font-size: large;
+}
+
+.nomeIdolo2 .div_exibirPontuacao {
+    border: solid 5px red;
+}
+
+#expPontuacaoIdolo {
+    background-color: black;
+    color: white;
+    border: solid 5px white;
+    border-radius: 10px;
+    margin: 0px 200px 50px 200px;
+}
+
+#div_exibirPontuacaoRai {
+    margin-right: 50px;
 }
 
 /* TÍTULOS */
